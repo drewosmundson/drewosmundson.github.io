@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pinball - Drew Osmundson</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #222;
+            min-height: 100vh;
+        }
+        canvas {
+            border: 1px solid #333;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="gameCanvas" width="700" height="975"></canvas>
+
+    <script>
+        // Game canvas and context
+        const canvas = document.getElementById('gameCanvas');
+        const ctx = canvas.getContext('2d');
+        
+        // Vec2 Class
+        class Vec2 {
+            constructor(x, y) {
+                this.x = x;
+                this.y = y;
+            }
+            
+            toString() {
+                return `(${this.x},${this.y})`;
+            }
+            
+            length() {
+                return Math.sqrt(this.x * this.x + this.y * this.y);
+            }
+            
+            lengthSqr() {
+                return this.x * this.x + this.y * this.y;
+            }
+            
+            plus(rhs) {
+                return new Vec2(this.x + rhs.x, this.y + rhs.y);
+            }
+            
+            add(rhs) {
+                this.x += rhs.x;
+                this.y += rhs.y;
+            }
+            
+            minus(rhs) {
+                return new Vec2(this.x - rhs.x, this.y - rhs.y);
+            }
+            
+            subtract(rhs) {
+                this.x -= rhs.x;
+                this.y -= rhs.y;
+            }
+            
+            times(rhs) {
+                return new Vec2(this.x * rhs, this.y * rhs);
+            }
+            
+            mul(rhs) {
+                this.x *= rhs;
+                this.y *= rhs;
+            }
+            
+            clampToLength(maxL) {
+                const magnitude = Math.sqrt(this.x * this.x + this.y * this.y);
+                if (magnitude > maxL) {
+                    this.x *= maxL / magnitude;
+                    this.y *= maxL / magnitude;
+                }
+            }
+            
+            setToLength(newL) {
+                const magnitude = Math.sqrt(this.x * this.x + this.y * this.y);
+                this.x *= newL / magnitude;
+                this.y *= newL / magnitude;
+            }
+            
+            normalize() {
+                const magnitude = Math.sqrt(this.x * this.x + this.y * this.y);
+                this.x /= magnitude;
+                this.y /= magnitude;
+            }
+            
+            normalized() {
+                const magnitude = Math.sqrt(this.x * this.x + this.y * this.y);
+                return new Vec2(this.x / magnitude, this.y / magnitude);
+            }
+            
+            distanceTo(rhs) {
+                const dx = rhs.x - this.x;
+                const dy = rhs.y - this.y;
+                return Math.sqrt(dx * dx + dy * dy);
+            }
+        }
+        
+        // Vector helper functions
+        function interpolate(a, b, t) {
+            if (a instanceof Vec2 && b instanceof Vec2) {
+                return a.plus((b.minus(a)).times(t));
+            }
+            return a + ((b - a) * t);
+        }
+        
+        function dot(a, b) {
+            return a.x * b.x + a.y * b.y;
+        }
+        
+        function cross(a, b) {
+            return a.x * b.y - a.y * b.x;
+        }
+        
+        function projAB(a, b) {
+            return b.times(a.x * b.x + a.y * b.y);
+        }
+        
+        function perpendicular(a) {
+            return new Vec2(-a.y, a.x);
+        }
+        
+        // Wall Class
+        class Wall {
+            constructor(base, tip) {
+                this.base = base;
+                this.tip = tip;
+            }
+            
+            sketch() {
+                ctx.beginPath();
+                ctx.moveTo(this.base.x, this.base.y);
+                ctx.lineTo(this.tip.x, this.tip.y);
+                ctx.stroke();
+            }
+        }
+        
+        // Obstacle Class
+        class Obstacle {
+            constructor(pos, radius, id) {
+                this.pos = pos;
+                this.radius = radius;
+                this.id = id;
+                this.collision = false;
+            }
+            
+            sketch() {
+                ctx.beginPath();
+                ctx.arc(this.pos.x, this.pos.y, this.radius, 0, Math.PI * 2);
+                ctx.fill();
+            }
+            
+            update() {
+                if (this.collision) {
+                    this.collision = false;
+                    
+                    ctx.fillStyle = 'rgb(255, 10, 0)';
+                    ctx.beginPath();
+                    ctx.arc(this.pos.x, this.pos.y, this.radius * 3, 0, Math.PI * 2);
+                    ctx.fill();
+                    
+                    for (let i = 0; i < this.id; i++) {
+                        spawnBalls();
+                    }
+                }
+            }
+        }
+        
+        // Flipper Class
+        class Flipper {
+            constructor(base, min_angle, max_angle, angle, line_length) {
+                this.base = base;
+                this.min_angle = min_angle;
+                this.max_angle = max_angle;
+                this.angle = angle;
+                this.line_length = line_length;
+                this.angular_velocity = 0.0;
+                this.tip = this.getTip();
+            }
+            
+            getTip() {
+                const tip = new Vec2(0, 0);
+                tip.x = this.base.x + this.line_length * Math.cos(this.angle);
+                tip.y = this.base.y + this.line_length * Math.sin(this.angle);
+                return tip;
+            }
+            
+            sketch() {
+                ctx.beginPath();
+                ctx.moveTo(this.base.x, this.base.y);
+                ctx.lineTo(this.tip.x, this.tip.y);
+                ctx.stroke();
+            }
+            
+            update(dt) {
+                this.angle += this.angular_velocity * dt;
+                this.tip = this.getTip();
+                
+                if (this.angle >= this.max_angle) {
+                    this.angle = this.max_angle;
+                    this.angular_velocity = 0.1;
+                }
+                
+                if (this.angle <= this.min_angle) {
+                    this.angle = this.min_angle;
+                    this.angular_velocity = -0.1;
+                }
+            }
+            
+            updateSubsteps(dt) {
+                const subSteps = 20;
+                const subDt = dt / subSteps;
+                
+                for (let i = 0; i < subSteps; i++) {
+                    ctx.strokeStyle = `rgb(${100 - (i * 2)}, ${250 - (i * 4)}, 250)`;
+                    this.sketch();
+                    this.update(subDt);
+                }
+                
+                ctx.strokeStyle = 'white';
+            }
+        }
+        
+        // Ball Class
+        class Ball {
+            constructor(pos, vel, radius, id) {
+                this.pos = pos;
+                this.vel = vel;
+                this.radius = radius;
+                this.id = id;
+            }
+            
+            sketch() {
+                ctx.beginPath();
+                ctx.arc(this.pos.x, this.pos.y, this.radius, 0, Math.PI * 2);
+                ctx.fill();
+            }
+            
+            update(dt) {
+                this.vel.add(gravity.times(dt));
+                this.pos.add(this.vel.times(dt));
+            }
+            
+            updateSubsteps(dt) {
+                const subSteps = 35;
+                const subDt = dt / subSteps;
+                
+                for (let i = 0; i < subSteps; i++) {
+                    ctx.strokeStyle = 'transparent';
+                    ctx.fillStyle = `rgb(255, ${10 + (i * 7)}, 0)`;
+                    this.sketch();
+                    this.update(subDt);
+                    
+                    for (let j = 0; j < flippers.length; j++) {
+                        this.ballFlipperCollision(flippers[j]);
+                    }
+                    
+                    for (let j = 0; j < walls.length; j++) {
+                        this.ballWallCollision(walls[j]);
+                    }
+                    
+                    for (let j = 0; j < balls.length; j++) {
+                        this.ballBallCollision(balls[j]);
+                    }
+                    
+                    for (let j = 0; j < obstacles.length; j++) {
+                        this.ballObstacleCollision(obstacles[j]);
+                    }
+                }
+                
+                ctx.strokeStyle = 'white';
+                ctx.lineWidth = 2;
+                ctx.fillStyle = 'rgb(20, 20, 20)';
+            }
+            
+            ballWallCollision(wall) {
+                const restitution = 0.4;
+                
+                // Find the closest point on the line segment
+                const tip = wall.tip;
+                const dir = tip.minus(wall.base);
+                const dir_norm = dir.normalized();
+                const proj = dot(this.pos.minus(wall.base), dir_norm);
+                let closest;
+                
+                if (proj < 0) {
+                    closest = wall.base;
+                } else if (proj > dir.length()) {
+                    closest = tip;
+                } else {
+                    closest = wall.base.plus(dir_norm.times(proj));
+                }
+                
+                // Check if the ball is close enough to the line segment
+                const diff = this.pos.minus(closest);
+                const dist = diff.length();
+                
+                if (dist > this.radius) {
+                    return;
+                }
+                
+                diff.mul(1.0 / dist); // Normalize dir
+                
+                // Move the ball outside the line segment
+                this.pos = closest.plus(diff.times(this.radius));
+                
+                // Calculate the new ball velocity
+                const v_ball = dot(this.vel, diff);
+                const m1 = 1;
+                const m2 = 1000; // Give the wall a big mass compared to the ball
+                
+                // Conservation of momentum
+                const new_v = (m1 * v_ball - m2 * v_ball * restitution) / (m1 + m2);
+                this.vel.add(diff.times(new_v - v_ball));
+            }
+            
+            edgeCollision() {
+                if (this.pos.y > canvas.height + this.radius) {
+                    // Remove the ball
+                    currentBalls--;
+                    
+                    const index = balls.findIndex(ball => ball.id === this.id);
+                    if (index !== -1) {
+                        balls.splice(index, 1);
+                    }
+                }
+            }
+            
+            ballFlipperCollision(flipper) {
+                const restitution = 0.4;
+                
+                // Find the closest point on the line segment
+                const tip = flipper.getTip();
+                const dir = tip.minus(flipper.base);
+                const dir_norm = dir.normalized();
+                const proj = dot(this.pos.minus(flipper.base), dir_norm);
+                let closest;
+                
+                if (proj < 0) {
+                    closest = flipper.base;
+                } else if (proj > dir.length()) {
+                    closest = tip;
+                } else {
+                    closest = flipper.base.plus(dir_norm.times(proj));
+                }
+                
+                // Check if the ball is close enough to the line segment
+                const diff = this.pos.minus(closest);
+                const dist = diff.length();
+                
+                if (dist > this.radius) {
+                    return;
+                }
+                
+                diff.mul(1.0 / dist); // Normalize dir
+                
+                // Move the ball outside the line segment
+                this.pos = closest.plus(diff.times(this.radius));
+                
+                // Velocity of the flipper at the point of contact
+                const radius = closest.minus(flipper.base);
+                let surfaceVel = new Vec2(0, 0);
+                
+                if (radius.length() > 0) {
+                    surfaceVel = new Vec2(-radius.y, radius.x).normalized().times(flipper.angular_velocity * radius.length());
+                }
+                
+                // Calculate the new ball velocity
+                const v_ball = dot(this.vel, diff);
+                const v_flip = dot(surfaceVel, diff);
+                const m1 = 1;
+                const m2 = 1000;
+                
+                // Conservation of momentum
+                const new_v = (m1 * v_ball + m2 * v_flip - m2 * (v_ball - v_flip) * restitution) / (m1 + m2);
+                this.vel.add(diff.times(new_v - v_ball));
+            }
+            
+            ballBallCollision(collidingBall) {
+                if (collidingBall.id === this.id) return;
+                
+                const restitution = 0.4;
+                const delta = this.pos.minus(collidingBall.pos);
+                const dist = delta.length();
+                
+                if (dist < this.radius + collidingBall.radius) {
+                    // Move balls out of collision
+                    const overlap = 0.5 * (dist - this.radius - collidingBall.radius);
+                    this.pos.subtract(delta.normalized().times(overlap));
+                    collidingBall.pos.add(delta.normalized().times(overlap));
+                    
+                    // Collision
+                    const dir = delta.normalized();
+                    const v1 = dot(this.vel, dir);
+                    const v2 = dot(collidingBall.vel, dir);
+                    const m1 = 1;
+                    const m2 = 1;
+                    
+                    // Collision response
+                    const new_v1 = (m1 * v1 + m2 * v2 - m2 * (v1 - v2) * restitution) / (m1 + m2);
+                    const new_v2 = (m1 * v1 + m2 * v2 - m1 * (v2 - v1) * restitution) / (m1 + m2);
+                    
+                    this.vel.add(dir.times(new_v1 - v1));
+                    collidingBall.vel.add(dir.times(new_v2 - v2));
+                }
+            }
+            
+            ballObstacleCollision(obstacle) {
+                const restitution = 0.4;
+                const delta = this.pos.minus(obstacle.pos);
+                const dist = delta.length();
+                
+                if (dist < this.radius + obstacle.radius) {
+                    // Move ball out of collision
+                    const overlap = 0.5 * (dist - this.radius - obstacle.radius);
+                    this.pos.subtract(delta.normalized().times(overlap));
+                    
+                    // Collision
+                    const dir = delta.normalized();
+                    const v1 = dot(this.vel, dir);
+                    const v2 = 0;
+                    const m1 = 1;
+                    const m2 = 1000;
+                    
+                    // Collision response
+                    const new_v1 = (m1 * v1 + m2 * v2 - m2 * (v1 - v2) * restitution) / (m1 + m2);
+                    this.vel.add(dir.times(new_v1 - v1));
+                    obstacle.collision = true;
+                }
+            }
+        }
+        
+        // Game variables
+        const gravity = new Vec2(0, 400);
+        let currentBalls = 1;
+        let ballId = 0;
+        let lastTime = 0;
+        let gameOver = false;
+        
+        // Control states
+        const controls = {
+            leftPressed: false,
+            rightPressed: false,
+            upPressed: false,
+            downPressed: false,
+            newBallCreation: false
+        };
+        
+        // Initialize game objects
+        const right_flipper = new Flipper(new Vec2(480, 850), -3.65, -2.65, -3.65, 125);
+        const left_flipper = new Flipper(new Vec2(160, 850), -0.5, 0.5, 0.5, 125);
+        const right_launch_flipper = new Flipper(new Vec2(700, 850), -3.14, -2.44, -2.44, 70);
+        const left_launch_flipper = new Flipper(new Vec2(640, 850), -0.7, 0, -0.7, 70);
+        const center1 = new Flipper(new Vec2(320, 320), -3.14, 3.14, 3.14, 140);
+        const center2 = new Flipper(new Vec2(320, 320), -6.28, 0, 0, 140);
+        
+        const floorRight = new Wall(new Vec2(640, 750), new Vec2(480, 850));
+        const floorLeft = new Wall(new Vec2(0, 750), new Vec2(160, 850));
+        const lanchWall = new Wall(new Vec2(640, 300), new Vec2(640, 975));
+        const lanchWall1 = new Wall(new Vec2(640, 0), new Vec2(640, 200));
+        const launchBump = new Wall(new Vec2(640, 200), new Vec2(700, 250));
+        const launchBump1 = new Wall(new Vec2(640, 200), new Vec2(570, 250));
+        const launchBump2 = new Wall(new Vec2(0, 200), new Vec2(70, 250));
+        const centerWall1 = new Wall(new Vec2(220, 100), new Vec2(320, 50));
+        const centerWall2 = new Wall(new Vec2(420, 100), new Vec2(320, 50));
+        const middleCeiling = new Wall(new Vec2(0, 0), new Vec2(700, 0));
+        const middleRight = new Wall(new Vec2(500, 650), new Vec2(500, 400));
+        const middleLeft = new Wall(new Vec2(140, 650), new Vec2(140, 400));
+        const rightCeiling = new Wall(new Vec2(540, 0), new Vec2(640, 100));
+        const leftCeiling = new Wall(new Vec2(0, 100), new Vec2(100, 0));
+        const leftWall = new Wall(new Vec2(0, 0), new Vec2(0, 975));
+        const rightWall = new Wall(new Vec2(700, 0), new Vec2(700, 975));
+        
+        const gold = new Obstacle(new Vec2(320, 250), 5, 3);
+        const bronze = new Obstacle(new Vec2(70, 150), 15, 1);
+        const bronze1 = new Obstacle(new Vec2(570, 150), 15, 1);
+        
+        const ball = new Ball(new Vec2(670, 800), new Vec2(0, 0), 14, 0);
+        
+        // Arrays of game objects
+        const obstacles = [gold, bronze, bronze1];
+        const balls = [ball];
+        const flippers = [right_flipper, left_flipper, right_launch_flipper, left_launch_flipper, center1, center2];
+        const walls = [floorRight, floorLeft, lanchWall, rightCeiling, leftCeiling, leftWall, rightWall, 
+                      centerWall1, centerWall2, middleLeft, middleCeiling, middleRight, launchBump, 
+                      lanchWall1, launchBump1, launchBump2];
+        
+        // Function to spawn new balls
+        function spawnBalls() {
+            ballId++;
+            currentBalls++;
+            
+            const x = Math.random() * 100 + 20;  // random between 20 and 120
+            const y = Math.random() * 100 + 270; // random between 270 and 370
+            
+            const newBall = new Ball(new Vec2(x, y), new Vec2(0, 0), 15, ballId);
+            balls.push(newBall);
+        }
+        
+        // Update input based on control states
+        function gameInputs() {
+            if (controls.newBallCreation) {
+                spawnBalls();
+            }
+            
+            if (controls.rightPressed) {
+                right_flipper.angular_velocity = 10;
+            } else {
+                right_flipper.angular_velocity = -10;
+            }
+            
+            if (controls.leftPressed) {
+                left_flipper.angular_velocity = -10;
+            } else {
+                left_flipper.angular_velocity = 10;
+            }
+            
+            if (controls.upPressed) {
+                right_launch_flipper.angular_velocity = -1;
+                left_launch_flipper.angular_velocity = 1;
+            } else {
+                right_launch_flipper.angular_velocity = 17;
+                left_launch_flipper.angular_velocity = -17;
+            }
+        }
+        
+        // Function to flip the center flippers
+        function spinFlipper() {
+            if (center1.angle === -3.14) center1.angular_velocity = 2;
+            if (center1.angle === 3.14) center1.angular_velocity = -2;
+            if (center2.angle === -6.28) center2.angular_velocity = 4;
+            if (center2.angle === 0) center2.angular_velocity = -4;
+        }
+        
+        // Main game loop
+        function gameLoop(timestamp) {
+            if (!lastTime) lastTime = timestamp;
+            const dt = (timestamp - lastTime) / 1000; // Convert to seconds
+            lastTime = timestamp;
+            
+            // Clear the canvas
+            ctx.fillStyle = 'rgba(30, 30, 20, 0.4)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            
+            // Process game inputs
+            gameInputs();
+            
+            // Spin flippers
+            spinFlipper();
+            
+            // Draw walls
+            ctx.strokeStyle = 'white';
+            ctx.lineWidth = 9;
+            for (let i = 0; i < walls.length; i++) {
+                walls[i].sketch();
+            }
+            
+            // Update and draw flippers
+            ctx.lineWidth = 5;
+            for (let i = 0; i < flippers.length; i++) {
+                flippers[i].updateSubsteps(dt);
+                flippers[i].sketch();
+            }
+            
+            // Update and draw balls
+            ctx.lineWidth = 2;
+            for (let i = 0; i < balls.length; i++) {
+                balls[i].updateSubsteps(dt);
+                balls[i].sketch();
+                balls[i].edgeCollision();
+            }
+            
+            // Update and draw obstacles
+            ctx.strokeStyle = 'white';
+            ctx.lineWidth = 2;
+            ctx.fillStyle = 'rgb(255, 190, 20)';
+            for (let i = 0; i < obstacles.length; i++) {
+                obstacles[i].update();
+                obstacles[i].sketch();
+            }
+            
+            // Draw score
+            ctx.fillStyle = 'rgb(255, 190, 20)';
+            ctx.font = '50px Arial';
+            ctx.fillText(`Score ${ballId}`, 20, 950);
+            
+            // Check game over
+            if (currentBalls === 0 && !gameOver) {
+                gameOver = true;
+                ctx.fillStyle = 'rgb(255, 190, 20)';
+                ctx.fillText('Game Over', 200, 500);
+                ctx.fillText(`   Score ${ballId}`, 200, 600);
+                return; // Stop the animation loop
+            }
+            
+            // Continue the game loop
+            if (!gameOver) {
+                requestAnimationFrame(gameLoop);
+            }
+        }
+        
+        // Input event handlers
+        document.addEventListener('keydown', function(event) {
+            switch(event.key) {
+                case 'a':
+                    controls.leftPressed = true;
+                    break;
+                case 'd':
+                    controls.rightPressed = true;
+                    break;
+                case 'w':
+                    controls.upPressed = true;
+                    break;
+                case 'b':
+                    controls.newBallCreation = true;
+                    break;
+            }
+        });
+        
+        document.addEventListener('keyup', function(event) {
+            switch(event.key) {
+                case 'a':
+                    controls.leftPressed = false;
+                    break;
+                case 'd':
+                    controls.rightPressed = false;
+                    break;
+                case 'w':
+                    controls.upPressed = false;
+                    break;
+                case 'b':
+                    controls.newBallCreation = false;
+                    break;
+            }
+        });
+        
+        // Start the game
+        requestAnimationFrame(gameLoop);
+    </script>
+</body>
+</html>
