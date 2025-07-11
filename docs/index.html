@@ -1,48 +1,93 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Welcome to my personal page">
-  <title>Welcome to my github page</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Drew Osmundson | Software Portfolio</title>
+<!-- JetBrains Mono -->
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono&display=swap" rel="stylesheet">
+
+  <!-- Fira Code -->
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css" />
+
 </head>
+
+
 <body>
-  <div class="container">
-    <header>
-      <h1>Welcome to My Personal Page</h1>
-      <p>test</p>
-    </header>
-
-    <section class="links">
-      <h2>Explore More</h2>
-      <ul>
-        <li><a href="https://drewosmundson.github.io/Portfolio/" target="_blank">My Portfolio</a></li>
-        <li><a href="https://github.com/drewosmundson" target="_blank">GitHub</a></li>
-        <li><a href="https://www.linkedin.com/in/drewosmundson" target="_blank">LinkedIn</a></li>
+  <header>
+    <nav class="navbar">
+      <h1 class="logo">Drew Osmundson</h1>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="experience.html">Experience</a></li>
+        <li><a href="contact.html">Contact</a></li>
       </ul>
+    </nav>
+  </header>
+
+  <main>
+    <!-- About Preview -->
+    <section class="about-preview">
+      <div class="container">
+        <h2>Welcome</h2>
+        <p>something something something</p>
+        <a class="btn" href="about.html">Learn More</a>
+      </div>
     </section>
 
-    <section class="project">
-      <h2>3D Multiplayer Naval Combat Game</h2>
-      <p><strong>Technologies:</strong> JavaScript, Three.js, Node.js, Socket.IO, Express, WebGL</p>
-      <ul>
-        <li>Developed a real-time 3D multiplayer boat combat game with custom physics, procedural terrain, and water simulation using Three.js and WebGL.</li>
-        <li>Engineered a modular Boat class system supporting damage handling, wave-responsive movement, randomized terrain-safe spawn points, and visual feedback for hits and destruction.</li>
-        <li>Built a Projectile system with realistic ballistic trajectories, gravity physics, and collision detection against terrain, water, and enemy boats.</li>
-        <li>Integrated visual effects such as water splashes, terrain dust impacts, explosions, and particle-based damage indicators to enhance gameplay feedback.</li>
-        <li>Designed and implemented smooth client-server synchronization using Socket.IO, supporting real-time position, rotation, and damage updates in multiplayer environments.</li>
-        <li>Managed game state transitions including player spawn, movement, shooting, and destruction with efficient network messaging and interpolation functions.</li>
-        <li>Optimized rendering performance with resource cleanup and conditional scene updates, ensuring memory-efficient gameplay.</li>
-        <li>Developed a robust collision detection system to trigger game events and visual effects based on projectile-boat and terrain interactions.</li>
-        <li>Employed clean code architecture with component-based game classes (e.g., Boat, Projectile, Terrain, Water, GameManager) for scalability and maintainability.</li>
-        <li>Deployed the full stack Node.js application to a live multiplayer server using Render, supporting public web access and real-time interaction.</li>
-      </ul>
+    <!-- Featured Projects -->
+    <section class="featured-projects">
+      <div class="container">
+        <h2>Featured Projects</h2>
+        <div class="project-grid">
+          <div class="project-card">
+            <h3>Schedule System</h3>
+            <p>A full-stack employee scheduling app catering to mobile food service</p>
+            <a class="btn" href="projects.html">View Project</a>
+          </div>
+          <div class="project-card">
+            <h3>3D Multiplayer Game</h3>
+            <p>Built using Three.js and WebSockets. Terrain, boats, and real-time interaction.</p>
+            <a class="btn" href="projects.html">View Project</a>
+          </div>
+          <div class="project-card">
+            <h3>LeetCode CLI Tool</h3>
+            <p>Bash script to pull daily problems and generate multi-language templates.</p>
+            <a class="btn" href="projects.html">View Project</a>
+          </div>
+        </div>
+      </div>
     </section>
 
-    <footer>
-      <p>By Drew Osmundson</p>
-    </footer>
-  </div>
+    <!-- Skills & Tech -->
+    <section class="skills">
+      <div class="container">
+        <h2>Skills & Technologies</h2>
+        <ul class="skills-list">
+          <li>JavaScript</li>
+          <li>Node.js</li>
+          <li>Express</li>
+          <li>Socket.IO</li>
+          <li>SQL & SQLite</li>
+          <li>React</li>
+          <li>Three.js</li>
+          <li>Git & GitHub</li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>Contact: drewosmundson@gmail.com | LinkedIn: <a href="https://linkedin.com/in/drewosmundson">@drewosmundson</a></p>
+      <p>&copy; 2025 Drew Osmundson</p>
+    </div>
+  </footer>
 </body>
 </html>

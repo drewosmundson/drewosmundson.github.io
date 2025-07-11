@@ -1,82 +1,170 @@
+/* style.css */
+
+/* Reset and Base Styles */
+/* Light Theme */
+:root {
+  --background-color: #f0f2ff;
+  --container-color: #3b4181;
+  --button-color: #6aabff;
+  --accent-color: #77af1e;
+
+  --text: #ecf2f8;
+  --button-text: #1c2a3b;
+
+  --hover-hightlight-container: #adc7e9;
+  --hover-highlight-text: #adc7e9;
+
+  --dropshadow-color: rgb(0, 0, 0, 0.2);
+}
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: 'Fira Code', monospace;
+  background-color: var(--background-color);
+  color: var(-- text);
+  line-height: 1.5;
+}
+
+.navbar .logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+}
+.nav-links a {
+  color: var(--text);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+.nav-links a:hover {
+  color:  var(--hover-highlight-text);
+}
+
+
+.container {
+  width: 90%;
+  max-width: 1100px;
+  margin: auto;
+  padding: 20px 0;
+}
+
+/* Navbar */
+.navbar {
+  background: var(--container-color);
+  color: var(--text);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+}
+
+
+
+/* Buttons */
+.btn {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background-color: var(--button-color);
+  color: var(--button-text);
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.btn:hover {
+  background-color: #77af1e;
+  transform: translateY(-2px);
+}
+
+/* Sections */
+.about-preview,
+.featured-projects,
+.skills {
+  padding: 4rem 0;
+  background-color: #393f2da6;
+}
+
+.about-preview h2,
+.featured-projects h2,
+.skills h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: #111827;
+}
+
+.about-preview p {
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+}
+
+/* Project Cards */
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+.project-card {
+  background-color: var(--secondary-color);
+  box-shadow: 0 8px 16px var(--dropshadow-color);
+  padding: 1.5rem;
+  border-radius: 8px;
+  transition: box-shadow 0.3s ease;
+}
+
+.project-card:hover {
+  box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+}
+
+.project-card h3 {
+  margin-bottom: 0.5rem;
+}
+
+.project-card p {
+  margin-bottom: 1rem;
+}
+
+.project-card-section {
   
-  body {
-    font-family: 'Arial', sans-serif;
-    background-color: #f4f7fb;
-    color: #333;
-    line-height: 1.6;
-  }
-  
-  .container {
-    width: 90%;
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 20px;
-  }
-  
-  header {
-    text-align: center;
-    margin-bottom: 30px;
-  }
-  
-  header h1 {
-    font-size: 3em;
-    color: #2c3e50;
-    margin-bottom: 10px;
-  }
-  
-  header p {
-    font-size: 1.2em;
-    color: #7f8c8d;
-  }
-  
-  .links {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  }
-  
-  .links h2 {
-    font-size: 2em;
-    margin-bottom: 20px;
-    text-align: center;
-    color: #34495e;
-  }
-  
-  .links ul {
-    list-style-type: none;
-    padding-left: 0;
-  }
-  
-  .links ul li {
-    margin: 10px 0;
-    text-align: center;
-  }
-  
-  .links ul li a {
-    text-decoration: none;
-    font-size: 1.2em;
-    color: #3498db;
-    transition: color 0.3s;
-  }
-  
-  .links ul li a:hover {
-    color: #2980b9;
-  }
-  
-  footer {
-    text-align: center;
-    margin-top: 40px;
-    font-size: 1.1em;
-    color: #7f8c8d;
-  }
-  
-  footer p {
-    font-size: 1em;
-  }
-  
+}
+
+/* Skills List */
+.skills-list {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.skills-list li {
+  background-color: #3e473f;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  color: #a5af9c;
+  font-weight: 500;
+}
+
+
+/* Footer */
+footer {
+  background: #1f372b;
+  color: #d6b7b7;
+  padding: 2rem;
+  text-align: center; 
+  font-size: 1rem;
+}
+
+footer a {
+  color: #dad28e;
+}
+
+footer a:hover {
+  color: #60a5fa;
+}
