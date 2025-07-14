@@ -1,12 +1,8 @@
-
-
-
-
 :root {
   --background-color:#f2f4f5;
   --primary-color: #abb2bf;
   --secondary-color: #818faa;
-  --accent-color: 	#636d83;
+  --accent-color: #636d83;
   --text-color: #282c34;
 }
 
@@ -15,17 +11,16 @@
   padding: 0;
   box-sizing: border-box;
 }
+
 body {
   background-color: var(--background-color);
-
   font-family: "DM Serif Text", serif;
   font-weight: 500;
   font-style: normal;
-
   color: var(--text-color);
-
   line-height: 1.5;
 }
+
 /* Header */
 .navbar {
   background: var(--primary-color);
@@ -34,114 +29,131 @@ body {
   justify-content: space-between;
   align-items: center;
   padding: 1rem 2rem;
+  flex-wrap: wrap;
+  gap: 1rem;
 }
+
 .navbar-name {
-  font-size: 2rem;
+  font-size: clamp(1.5rem, 4vw, 2rem);
 }
+
 .navbar-links {
-  font-size: 1.2rem;
+  font-size: clamp(1rem, 2.5vw, 1.2rem);
   list-style: none;
   display: flex;
   gap: 1.5rem;
+  flex-wrap: wrap;
 }
-/* controls horizontal margin of page */
 
+/* controls horizontal margin of page */
 .container {
-  border: 1px solid red;
   width: 90%;
   max-width: 1600px;
   margin: auto;
   padding: 5px 0;
 }
+
 /* about */
 .about-section {
   margin-top: 50px;
   margin-left: 25px;
-
+  margin-right: 25px;
 }
-.about-container {
-  border: 1px solid red;
-  font-size: 1.8rem;
-  display: flex; 
 
+.about-container {
+  font-size: clamp(1.2rem, 3vw, 1.8rem);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  align-items: flex-start;
+}
+
+.about-container-left {
+  flex: 0 0 auto;
+  min-width: 200px;
 }
 
 .about-container-left img {
-    border: 1px solid red;
-    width: auto;
-    height: 100%;
-    max-width: 300px; /* optional cap for large screens */
-    max-height: 300px;
-    aspect-ratio: 1 / 1; /* keeps image square */
-    object-fit: cover;
-    box-shadow: var(--shadow-lg);
+  width: 100%;
+  height: auto;
+  max-width: 300px;
+  max-height: 300px;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  box-shadow: var(--shadow-lg);
+}
+
+.about-container-center {
+  flex: 1;
+  min-width: 300px;
 }
 
 .about-container-center h2 {
-    border: 1px solid red;
-    font-size: 2.5rem;
-    font-weight: 700;
-    margin-bottom: 1rem;
+  font-size: clamp(2rem, 5vw, 2.5rem);
+  font-weight: 700;
+  margin-bottom: 1rem;
 }
 
 .about-container-center p {
-    border: 1px solid red;
-    font-size: 1.1rem;
-    max-width: 600px;
+  font-size: clamp(1rem, 2.5vw, 1.1rem);
+  max-width: 600px;
 }
 
 .about-container-right {
-  border: 1px solid red;
+  flex: 0 0 auto;
   margin-top: auto;
-  margin-left: auto;
-  margin-right: 10px;
+  align-self: flex-end;
 }
 
 .resume-section {
-  border: 1px solid red;
+  margin-top: 2rem;
 }
 
 .resume-container {
-  display: flex; 
+  display: flex;
   justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
 }
 
-.resume-container-left,
-.resume-container-right {
-    margin: 15px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0.75rem 1.5rem;
-    background-color: var(--accent-color);
-    color: white;
-    border-radius: 8px;
-    font-weight: 500;
-    cursor: pointer;
-    transition: background-color 0.3s, transform 0.2s;
+.resume-container-left, .resume-container-right {
+  margin: 15px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1.5rem;
+  background-color: var(--accent-color);
+  color: white;
+  border-radius: 8px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+  min-width: 120px;
+  text-align: center;
 }
-.resume-container-left:hover,
-.resume-container-right:hover {
+
+.resume-container-left:hover, .resume-container-right:hover {
   background-color: #77af1e;
   transform: translateY(-2px);
 }
 
 .projects-section {
-  border: 1px solid red;
+  margin-top: 2rem;
 }
 
 .projects-container {
-  border: 1px solid red;
-  margin: 15px;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 1.5rem;
-  
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: clamp(1rem, 2vw, 2.5rem);
+  justify-items: center;
+  padding: 0 1rem;
 }
 
 .project {
-  border: 1px solid red;
-  max-height: 150px;
+  width: 100%;
+  max-width: 400px;
+  min-height: 150px;
+  height: auto;
   background-color: var(--secondary-color);
   box-shadow: 0 8px 16px var(--dropshadow-color);
   border-radius: 8px;
@@ -152,22 +164,28 @@ body {
   word-break: break-word;
 }
 
-.project:hover{
+.project:hover {
   background-color: #77af1e;
   transform: translateY(-2px);
 }
-.project h3 {
-  margin: 10px
-}
-.project-left {
 
+.project h3 {
+  margin: 10px;
+  font-size: clamp(1.1rem, 2.5vw, 1.3rem);
 }
+
+.project-left {
+  flex: 1;
+  min-width: 0; /* Allows flex item to shrink below content size */
+  padding: 10px;
+}
+
 .project-right {
   width: 150px;
+  min-width: 100px;
   aspect-ratio: 1 / 1;
   flex-shrink: 0;
   overflow: hidden;
-  border: 1px solid red;
 }
 
 .project-right img {
@@ -175,13 +193,72 @@ body {
   height: 100%;
   object-fit: cover;
   display: block;
-  max-width: 150px;
-  aspect-ratio: 1 / 1; 
   box-shadow: var(--shadow-lg);
 }
+
 .see-all-projects {
-    margin-top: auto;
-    margin-left: auto;
-    margin-right: 10px;
+  margin-top: auto;
+  margin-left: auto;
+  margin-right: 10px;
 }
 
+/* Media Queries for smaller screens */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .navbar-links {
+    justify-content: center;
+  }
+  
+  .about-container {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .about-container-right {
+    align-self: center;
+    margin-top: 1rem;
+  }
+  
+  .project {
+    flex-direction: column;
+    height: auto;
+    min-height: 200px;
+  }
+  
+  .project-right {
+    width: 100%;
+    height: 150px;
+    min-width: unset;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    width: 95%;
+  }
+  
+  .about-section {
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+  
+  .navbar {
+    padding: 1rem;
+  }
+  
+  .projects-container {
+    grid-template-columns: 1fr;
+    padding: 0 0.5rem;
+  }
+  
+  .resume-container-left, .resume-container-right {
+    margin: 10px 5px;
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+  }
+}
