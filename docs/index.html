@@ -11,7 +11,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     
-   <style>
+    <style>
         :root {
             --primary: #0f172a;
             --secondary: #1e293b;
@@ -46,6 +46,8 @@
             border: 1px solid var(--border);
             border-radius: 12px;
             padding: 2rem;
+            border-bottom: 1px solid var(--text-muted);
+            box-shadow: var(--shadow-lg);
         }
 
         .container {
@@ -111,7 +113,7 @@
         }
 
         .logo {
-            font-size: 1.5rem;
+            font-size: 1.75rem;
             font-weight: 700;
             text-decoration: none;
         }
@@ -183,7 +185,6 @@
         .btn-primary {
             background: var(--accent);
             color: white;
-            
         }
 
         .btn-primary:hover {
@@ -249,7 +250,7 @@
             object-fit: cover;
             border-radius: 10px;
             box-shadow: var(--shadow-lg);
-            border: 2px solid var(--text-muted);
+            border: 1px solid var(--text-muted);
         }
 
         /* Projects */
@@ -258,25 +259,18 @@
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 2rem;
             margin-top: 2rem;
-            
         }
 
         .project-card {
             background: var(--secondary);
             border: 1px solid var(--border);
             border-radius: 12px;
+            border-bottom: 1px solid var(--text-muted);
+            box-shadow: var(--shadow-lg);
             overflow: hidden;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             display: flex;
             flex-direction: column;
-  
-            border-bottom: 1px solid var(--text-muted);
-            box-shadow: var(--shadow-lg);
-        }
-
-        .project-card:hover {
-            box-shadow: var(--shadow-lg);
-            
         }
 
         .project-image {
@@ -286,28 +280,22 @@
             color: white;
             font-size: 1.2rem;
             font-weight: 500;
-
-
         }
 
         .project-content {
             padding: 1.5rem;
             flex-grow: 1;
-            
         }
 
         .project-title {
             font-size: 1.25rem;
             font-weight: 600;
             margin-bottom: 0.5rem;
-            border-bottom: 1px solid var(--border);
-            
         }
 
         .project-description {
             color: var(--text-secondary);
             margin-bottom: 1rem;
-            
         }
 
         .project-tech {
@@ -332,7 +320,6 @@
             justify-content: center;
             padding: 0 1.5rem 1.5rem;
             margin-top: auto;
-            
         }
 
         .project-footer a {
@@ -341,7 +328,6 @@
             font-weight: 500;
             transition: color 0.3s ease;
             position: relative;
-            
         }
 
         .project-footer a:hover {
@@ -351,104 +337,77 @@
         .see-all-projects {
             margin-top: 3rem;
             text-align: center;
-            
         }
-/* Skills */
-.skills-container {
-    display: grid;
-    gap: 2rem;
 
-    background: var(--secondary);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 1rem;
-    margin-top: 2rem;
-    margin-bottom: 3rem;
-                border-bottom: 1px solid var(--text-muted);
-}
-
-.skill-category {    
-    background: var(--primary);
-    padding: 1.5rem;
-    border-radius: 10px;
-    box-shadow: var(--shadow-light);
-        border-top: 1px solid var(--accent);
-    border-bottom: 1px solid var(--text-muted);
-            box-shadow: var(--shadow-lg);
-            
-}
-
-.skill-category h3 {
-    font-size: 1.55rem;
-    margin-bottom: 1rem;
-    color: var(--text);
-    border-bottom: 1px solid var(--border);
-
-    
-}
-
-.skill-list {
-    display: flex;
-    flex-wrap: wrap;
-    list-style: none;
-    gap: 3rem;
-    margin-top: 1rem;
-    
-    
-}
-
-    .skill-item {
-
-
-        font-size: 1.25rem;
-        color: var(--text-secondary);
-
-        
-    }
-    .links {
-      margin-top: 2rem;
-      display: flex;
-      justify-content: center; 
-    }
-    .resume {
-      margin-top: 1rem;
-      margin-bottom: 4rem;
-      display: flex;
-      justify-content: center;
-    }
-    /* Contact */
-
-          .contact {
-              padding: 3rem 1rem;
-              background-color: var(--background-color);
-          }
-
-          .contact-container {
-              display: flex;
-              justify-content: center;
-              align-items: center;
-              width: 100%;
-              
-          }
-
-          .contact-form {
-              max-width: 700px;
-              width: 100%;
-              box-shadow: var(--shadow-lg);
-               
+        /* Skills */
+        .skills-container {
+            display: grid;
+            gap: 2rem;
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1rem;
+            margin-top: 2rem;
+            margin-bottom: 3rem;
             border-bottom: 1px solid var(--text-muted);
-          }
+        }
+
+        .skill-category {
+            background: var(--primary);
+            padding: 1.5rem;
+            border-radius: 10px;
+            border-top: 1px solid var(--accent);
+            border-bottom: 1px solid var(--accent-hover);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .skill-category h3 {
+            font-size: 1.55rem;
+            margin-bottom: 1rem;
+            color: var(--text);
+        }
+
+        .skill-list {
+            display: flex;
+            flex-wrap: wrap;
+            list-style: none;
+            gap: 3rem;
+            margin-top: 1rem;
+        }
+
+        .skill-item {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+        }
+
+        .centered-links {
+            margin-top: 2rem;
+            display: flex;
+            justify-content: center;
+        }
+
+        /* Contact */
+        .contact-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+        }
+
+        .contact-form {
+            max-width: 700px;
+            width: 100%;
+        }
+
         /* Form */
         .form-group {
             margin-bottom: 1rem;
-            
         }
 
         .form-group label {
             display: block;
             margin-bottom: 0.5rem;
             font-weight: 500;
-            
         }
 
         .form-group input,
@@ -461,7 +420,6 @@
             color: var(--text);
             font-size: 1rem;
             transition: border-color 0.3s ease;
-            
         }
 
         .form-group input:focus,
@@ -515,13 +473,7 @@
             flex-wrap: wrap;
             gap: 1rem;
         }
-        .footer-content svg {
-            gap: 2rem;
-            list-style: none;
-            width: 25px;
-            height: 25px;
 
-        }
         .footer-links {
             display: flex;
             gap: 2rem;
@@ -558,6 +510,7 @@
         .footer-link-item a:hover {
             color: var(--accent);
         }
+
         .footer-text {
             color: var(--text-muted);
             font-size: 0.9rem;
@@ -565,7 +518,6 @@
 
         /* Responsive Design */
         @media (max-width: 768px) {
-
             .container {
                 padding: 0 1rem;
             }
@@ -579,6 +531,7 @@
                 gap: 2rem;
                 text-align: center;
             }
+
             .contact-container {
                 flex-direction: column;
                 padding: 2rem 1rem;
@@ -587,6 +540,7 @@
             .contact-form {
                 width: 100%;
             }
+
             .hero-title {
                 font-size: 2.5rem;
             }
@@ -595,6 +549,7 @@
             .skills-container {
                 grid-template-columns: 1fr;
             }
+
             .skill-list {
                 justify-content: flex-start;
             }
@@ -653,7 +608,7 @@
                     <h1 class="hero-title gradient-text">Full-Stack Developer</h1>
                     <p>I create modern web applications with clean code and intuitive user experiences. Specializing in React, Node.js, and cloud technologies.</p>
                     <div class="btn-group">
-                        <a href="#projects" class="btn btn-primary hover-lift">Read more in about -> </a>
+                        <a href="#projects" class="btn btn-primary hover-lift">Read more in about -></a>
                         <a href="#" class="btn btn-secondary hover-lift" target="_blank">Download Resume</a>
                     </div>
                 </div>
@@ -719,7 +674,7 @@
                 </div>
             </div>
             <div class="see-all-projects">
-                <a href="#contact" class="btn btn-primary hover-lift">See All Projects -> </a>
+                <a href="#contact" class="btn btn-primary hover-lift">See All Projects -></a>
             </div>
         </section>
 
@@ -756,22 +711,19 @@
                         <li class="skill-item">Docker</li>
                         <li class="skill-item">AWS</li>
                         <li class="skill-item">Vercel</li>
-           
                     </ul>
                 </div>
-
             </div>
-            <div style="text-align: center;">
-                <a href="#contact" class="btn btn-primary hover-lift">See my experience -> </a>
+            <div class="centered-links">
+                <a href="#contact" class="btn btn-primary hover-lift">See my experience -></a>
             </div>
         </section>
 
         <!-- Contact Section -->
-        <section id="contact" class="section contact">
+        <section id="contact" class="section">
             <h2 class="title">Get In Touch</h2>
             <div class="contact-container">
                 <div class="contact-form card">
-                    <h3>Send a Message</h3>
                     <form id="contactForm">
                         <div class="form-group">
                             <label for="name">Name</label>
@@ -790,52 +742,48 @@
                         
                         <div class="form-group">
                             <label for="message">Message</label>
-                            <textarea id="message" name="message" placeholder="Hello!... " required></textarea>
+                            <textarea id="message" name="message" placeholder="Hello!..." required></textarea>
                         </div>
                         
                         <button type="submit" class="form-submit">Send Message</button>
                     </form>
                 </div>
             </div>
-            <div class="links"><a href="#" class="btn btn-primary hover-lift" target="_blank">My links -></a></div>
-        </section>
-        <section class="resume">
-
+            <div class="centered-links">
+                <a href="#" class="btn btn-primary hover-lift" target="_blank">My links -></a>
+            </div>
         </section>
     </main>
 
     <!-- Footer -->
     <footer class="footer">
         <div class="footer-content container">
-        <ul class="footer-links">
-            <li>
-                <a href="https://github.com/drewosmundson" target="_blank" class="footer-link-item">
-                    <svg viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5c.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34c-.46-1.16-1.11-1.47-1.11-1.47c-.91-.62.07-.6.07-.6c1 .07 1.53 1.03 1.53 1.03c.87 1.52 2.34 1.07 2.91.83c.09-.65.35-1.09.63-1.34c-2.22-.25-4.55-1.11-4.55-4.92c0-1.11.38-2 1.03-2.71c-.1-.25-.45-1.29.1-2.64c0 0 .84-.27 2.75 1.02c.79-.22 1.65-.33 2.5-.33c.85 0 1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02c.55 1.35.2 2.39.1 2.64c.65.71 1.03 1.6 1.03 2.71c0 3.82-2.34 4.66-4.57 4.91c.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2z"/>
-                    </svg>
-                    GitHub
-                </a>
-            </li>
-            <li>
-                <a href="mailto:drewosmundson@gmail.com" class="footer-link-item">
-                    <svg viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2zm8 7L4 6v12h16V6l-8 5z"/>
-                    </svg>
-                    Email
-                </a>
-            </li>
-            <li>
-                <a href="https://linkedin.com/in/drewosmundson" target="_blank" class="footer-link-item">
-                    <svg viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/>
-                    </svg>
-                    LinkedIn
-                </a>
-            </li>
-            
-        </ul>
-
-
+            <ul class="footer-links">
+                <li>
+                    <a href="https://github.com/drewosmundson" target="_blank" class="footer-link-item">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5c.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34c-.46-1.16-1.11-1.47-1.11-1.47c-.91-.62.07-.6.07-.6c1 .07 1.53 1.03 1.53 1.03c.87 1.52 2.34 1.07 2.91.83c.09-.65.35-1.09.63-1.34c-2.22-.25-4.55-1.11-4.55-4.92c0-1.11.38-2 1.03-2.71c-.1-.25-.45-1.29.1-2.64c0 0 .84-.27 2.75 1.02c.79-.22 1.65-.33 2.5-.33c.85 0 1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02c.55 1.35.2 2.39.1 2.64c.65.71 1.03 1.6 1.03 2.71c0 3.82-2.34 4.66-4.57 4.91c.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2z"/>
+                        </svg>
+                        GitHub
+                    </a>
+                </li>
+                <li>
+                    <a href="mailto:drewosmundson@gmail.com" class="footer-link-item">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2zm8 7L4 6v12h16V6l-8 5z"/>
+                        </svg>
+                        Email
+                    </a>
+                </li>
+                <li>
+                    <a href="https://linkedin.com/in/drewosmundson" target="_blank" class="footer-link-item">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/>
+                        </svg>
+                        LinkedIn
+                    </a>
+                </li>
+            </ul>
             <p class="footer-text">&copy; 2025 Drew Osmundson. All rights reserved.</p>
         </div>
     </footer>
