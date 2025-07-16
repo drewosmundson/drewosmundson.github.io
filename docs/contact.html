@@ -68,6 +68,7 @@
             -webkit-text-fill-color: transparent;
         }
 
+
         .back-link {
             display: inline-flex;
             align-items: center;
@@ -77,10 +78,25 @@
             font-weight: 500;
             margin-bottom: 2rem;
             transition: color 0.3s ease;
+            position: relative;
         }
 
         .back-link:hover {
             color: var(--accent);
+        }
+        .back-link::before{
+            opacity: 0;
+            content: '{ ';
+            left: -1rem;
+        }
+        .back-link::after{
+            opacity: 0;
+            content: ' }';
+            left: 1rem;
+        }
+        .back-link:hover::after,
+        .back-link:hover::before {
+            opacity: 1;
         }
 
 
@@ -138,8 +154,9 @@
             transition: color 0.3s ease;
             position: relative;
         }
-
-        .nav-links a:hover {
+        
+        .nav-links a:hover,
+        .nav-links a.active {
             color: var(--accent);
         }
 
@@ -175,7 +192,10 @@
             display: flex;
             align-items: center;
         }
-
+        .contact-hero {
+            padding: 2rem 0;
+            margin-bottom: 2rem;
+        }
         .section {
             padding: 4rem 0;
         }
@@ -276,7 +296,7 @@
         .form-group input:focus,
         .form-group textarea:focus {
             outline: none;
-            border-color: var(--accent);
+            border-bottom: var(--accent-hover);
         }
 
         .form-group textarea {
@@ -398,18 +418,6 @@
             }
         }
 
-        /* Animations */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
         .contact-container > * {
             animation: fadeInUp 0.6s ease forwards;
         }
@@ -424,13 +432,13 @@
     <nav class="navbar">
         <div class="container">
             <div class="nav-container">
-                <a href="#" class="logo gradient-text">Drew Osmundson</a>
+                <a href="index.html" class="logo gradient-text">Drew Osmundson</a>
                 <ul class="nav-links">
-                    <li><a href="home.html">Home</a></li>
+                    <li><a href="index.html">Home</a></li>
                     <li><a href="about.html">About</a></li>
                     <li><a href="projects.html">Projects</a></li>
                     <li><a href="skills.html">Skills</a></li>
-                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="contact.html" class="active">Contact</a></li>
                 </ul>
           </div>
         </div>
@@ -441,7 +449,7 @@
         <div class="container">
             <!-- Contact Section -->
 
-            <section id="contact" class="section contact">
+            <section id="contact" class="contact-hero">
                 <a href="index.html" class="back-link"> <- Back to Home</a>
                 <h2 class="title gradient-text">Get In Touch</h2>
                 <div class="contact-container">
@@ -483,7 +491,6 @@
                     </div>
                     
                     <div class="contact-form card">
-                        <h3>Send a Message</h3>
                         <form id="contactForm">
                             <div class="form-group">
                                 <label for="name">Name</label>
@@ -510,7 +517,6 @@
                     </div>
                 </div>
                 <div class="centered-links">
-                <a href="#" class="btn btn-primary hover-lift" target="_blank">My links -></a>
               </div>
             </section>
         </div>

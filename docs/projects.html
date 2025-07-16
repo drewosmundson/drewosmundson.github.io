@@ -213,7 +213,10 @@
         .main-content {
             margin-top: 80px;
         }
-
+        .project-hero {
+            padding: 2rem 0;
+            margin-bottom: 2rem;
+        }
         .section {
             padding: 4rem 0;
         }
@@ -227,10 +230,25 @@
             font-weight: 500;
             margin-bottom: 2rem;
             transition: color 0.3s ease;
+            position: relative;
         }
 
         .back-link:hover {
             color: var(--accent);
+        }
+        .back-link::before{
+            opacity: 0;
+            content: '{ ';
+            left: -1rem;
+        }
+        .back-link::after{
+            opacity: 0;
+            content: ' }';
+            left: 1rem;
+        }
+        .back-link:hover::after,
+        .back-link:hover::before {
+            opacity: 1;
         }
 
         /* Projects */
@@ -371,6 +389,15 @@
             list-style: none;
         }
 
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+        }
         .footer-link-item {
             display: flex;
             align-items: center;
@@ -381,8 +408,8 @@
             width: 25px;
             height: 25px;
             flex-shrink: 0;
+  
         }
-
         .footer-link-item a {
             color: var(--text-secondary);
             text-decoration: none;
@@ -398,6 +425,11 @@
             font-size: 0.9rem;
         }
 
+        .centered-links {
+            margin-top: 2rem;
+            display: flex;
+            justify-content: center;
+        }
         /* Responsive Design */
         @media (max-width: 768px) {
             .container {
@@ -447,7 +479,7 @@
 
     <!-- Main Content -->
     <main class="main-content container">
-        <section class="section">
+        <section class="project-hero">
             <a href="index.html" class="back-link"> <- Back to Home</a>
             <h1 class="title gradient-text">My Projects</h1>
             <p class="subtitle">A comprehensive showcase of my web development work, featuring full-stack applications, creative solutions, and technical experiments.</p>
