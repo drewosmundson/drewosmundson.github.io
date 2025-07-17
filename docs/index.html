@@ -221,7 +221,7 @@
         }
 
         .hero {
-            border: 1px solid red;
+
             min-height: 60vh;
             display: flex;
             align-items: center;
@@ -238,14 +238,14 @@
 
         .hero-text p {
             font-size: 1.2rem;
-            
+
             color: var(--text-secondary);
             margin-bottom: 2rem;
             max-width: 600px;
         }
 
         .hero-image img {
-            padding-top: 5px;
+            margin-top: 1rem;
             width: 90%;
             height: 90%;
             max-width: 400px;
@@ -253,7 +253,7 @@
             object-fit: cover;
             border-radius: 10px;
             box-shadow: var(--shadow-lg);
-            border: 1px solid var(--text-muted);
+  
         }
 
         /* Projects */
@@ -284,7 +284,17 @@
             font-size: 1.2rem;
             font-weight: 500;
         }
-
+        .project-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        .project-image.text-only {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
         .project-content {
             padding: 1.5rem;
             flex-grow: 1;
@@ -626,7 +636,9 @@
             <h2 class="title">Featured Projects</h2>
             <div class="projects-grid">
                 <div class="project-card">
-                    <div class="project-image flex-center">Employee Scheduling System</div>
+                    <div class="project-image">
+                        <img src="images/ottoproject.png" alt="Employee Scheduling System">
+                    </div>
                     <div class="project-content">
                         <h3 class="project-title">Employee Scheduling System</h3>
                         <p class="project-description">A full-stack employee scheduling application designed for mobile food service businesses with real-time updates and mobile-first design.</p>
@@ -643,7 +655,7 @@
                 </div>
                 
                 <div class="project-card">
-                    <div class="project-image flex-center">E-Commerce Platform</div>
+                    <div class="project-image text-only">E-Commerce Platform</div>
                     <div class="project-content">
                         <h3 class="project-title">E-Commerce Platform</h3>
                         <p class="project-description">Modern e-commerce solution with payment processing, inventory management, and admin dashboard.</p>
@@ -660,7 +672,7 @@
                 </div>
                 
                 <div class="project-card">
-                    <div class="project-image flex-center">Task Management App</div>
+                    <div class="project-image text-only">Task Management App</div>
                     <div class="project-content">
                         <h3 class="project-title">Task Management App</h3>
                         <p class="project-description">Collaborative task management application with real-time updates, team collaboration, and progress tracking.</p>
@@ -680,6 +692,7 @@
                 <a href="projects.html" class="btn btn-primary hover-lift">See All Projects -></a>
             </div>
         </section>
+
 
         <!-- Skills Section -->
         <section id="skills" class="section">

@@ -15,8 +15,8 @@
         :root {
             --primary: #0f172a;
             --secondary: #1e293b;
-            --accent: #3b92f6;
-            --accent-hover: #eb9c25;
+            --accent: #5493ce;
+            --accent-hover: #a7815d;
             --text: #f8fafc;
             --text-secondary: #cbd5e1;
             --text-muted: #64748b;
@@ -54,6 +54,46 @@
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 2rem;
+        }
+       /* Skills */
+        .skills-container {
+            display: grid;
+            gap: 2rem;
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1rem;
+            margin-top: 2rem;
+            margin-bottom: 3rem;
+            border-bottom: 1px solid var(--text-muted);
+        }
+
+        .skill-category {
+            background: var(--primary);
+            padding: 1.5rem;
+            border-radius: 10px;
+            border-top: 1px solid var(--accent);
+            border-bottom: 1px solid var(--accent-hover);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .skill-category h3 {
+            font-size: 1.55rem;
+            margin-bottom: 1rem;
+            color: var(--text);
+        }
+
+        .skill-list {
+            display: flex;
+            flex-wrap: wrap;
+            list-style: none;
+            gap: 3rem;
+            margin-top: 1rem;
+        }
+
+        .skill-item {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
         }
 
         .flex-center {
@@ -616,237 +656,47 @@
                 <p>Below you'll find a comprehensive overview of my technical skills, tools, and certifications that enable me to build robust, scalable applications.</p>
             </div>
         </section>
-
-        <!-- Technical Skills -->
-        <section class="section">
-            <h2 class="section-title">Technical Skills</h2>
-            <div class="skills-grid">
+     <!-- Skills Section -->
+        <section id="skills" class="section">
+            <h2 class="title">Technical Skills</h2>
+            <div class="skills-container">
                 <div class="skill-category">
-                    <span class="skill-category-icon">🎨</span>
-                    <h3 class="skill-category-title">Frontend Development</h3>
-                    <div class="skill-items">
-                        <span class="skill-item">React</span>
-                        <span class="skill-item">Vue.js</span>
-                        <span class="skill-item">TypeScript</span>
-                        <span class="skill-item">JavaScript (ES6+)</span>
-                        <span class="skill-item">HTML5</span>
-                        <span class="skill-item">CSS3</span>
-                        <span class="skill-item">Tailwind CSS</span>
-                        <span class="skill-item">SCSS/Sass</span>
-                        <span class="skill-item">Next.js</span>
-                        <span class="skill-item">Redux</span>
-                        <span class="skill-item">Webpack</span>
-                        <span class="skill-item">Vite</span>
-                    </div>
+                    <h3>Frontend</h3>
+                    <ul class="skill-list">
+                        <li class="skill-item">React</li>
+                        <li class="skill-item">Vue.js</li>
+                        <li class="skill-item">TypeScript</li>
+                        <li class="skill-item">Next.js</li>
+                        <li class="skill-item">Tailwind CSS</li>
+                    </ul>
                 </div>
-
+                
                 <div class="skill-category">
-                    <span class="skill-category-icon">⚙️</span>
-                    <h3 class="skill-category-title">Backend Development</h3>
-                    <div class="skill-items">
-                        <span class="skill-item">Node.js</span>
-                        <span class="skill-item">Express.js</span>
-                        <span class="skill-item">Python</span>
-                        <span class="skill-item">Django</span>
-                        <span class="skill-item">FastAPI</span>
-                        <span class="skill-item">PostgreSQL</span>
-                        <span class="skill-item">MongoDB</span>
-                        <span class="skill-item">Redis</span>
-                        <span class="skill-item">GraphQL</span>
-                        <span class="skill-item">REST APIs</span>
-                        <span class="skill-item">JWT</span>
-                        <span class="skill-item">Socket.io</span>
-                    </div>
+                    <h3>Backend</h3>
+                    <ul class="skill-list">
+                        <li class="skill-item">Node.js</li>
+                        <li class="skill-item">Express</li>
+                        <li class="skill-item">Python</li>
+                        <li class="skill-item">MongoDB</li>
+                        <li class="skill-item">PostgreSQL</li>
+                    </ul>
                 </div>
-
+                
                 <div class="skill-category">
-                    <span class="skill-category-icon">☁️</span>
-                    <h3 class="skill-category-title">Cloud & DevOps</h3>
-                    <div class="skill-items">
-                        <span class="skill-item">AWS</span>
-                        <span class="skill-item">Docker</span>
-                        <span class="skill-item">Kubernetes</span>
-                        <span class="skill-item">CI/CD</span>
-                        <span class="skill-item">GitHub Actions</span>
-                        <span class="skill-item">Jenkins</span>
-                        <span class="skill-item">Terraform</span>
-                        <span class="skill-item">Nginx</span>
-                        <span class="skill-item">Linux</span>
-                        <span class="skill-item">Serverless</span>
-                        <span class="skill-item">Microservices</span>
-                    </div>
+                    <h3>Tools & Cloud</h3>
+                    <ul class="skill-list">
+                        <li class="skill-item">Git</li>
+                        <li class="skill-item">Docker</li>
+                        <li class="skill-item">AWS</li>
+                        <li class="skill-item">Vercel</li>
+                    </ul>
                 </div>
-
-                <div class="skill-category">
-                    <span class="skill-category-icon">🛠️</span>
-                    <h3 class="skill-category-title">Tools & Workflow</h3>
-                    <div class="skill-items">
-                        <span class="skill-item">Git</span>
-                        <span class="skill-item">GitHub</span>
-                        <span class="skill-item">GitLab</span>
-                        <span class="skill-item">Jest</span>
-                        <span class="skill-item">Cypress</span>
-                        <span class="skill-item">Storybook</span>
-                        <span class="skill-item">Figma</span>
-                        <span class="skill-item">Postman</span>
-                        <span class="skill-item">VS Code</span>
-                        <span class="skill-item">Agile/Scrum</span>
-                        <span class="skill-item">Jira</span>
-                    </div>
-                </div>
+            </div>
+            <div class="centered-links">
+                <a href="skills.html" class="btn btn-primary hover-lift">See my experience -></a>
             </div>
         </section>
 
-        <!-- Skill Proficiency Levels -->
-        <section class="section">
-            <h2 class="section-title">Proficiency Levels</h2>
-            <div class="skills-grid">
-                <div class="skill-category">
-                    <h3 class="subsection-title">Frontend Technologies</h3>
-                    <div class="skill-level">
-                        <div class="skill-level-item">
-                            <span class="skill-level-name">React</span>
-                            <span class="skill-level-percentage">95%</span>
-                        </div>
-                        <div class="skill-level-bar">
-                            <div class="skill-level-fill" style="width: 95%;"></div>
-                        </div>
-                        
-                        <div class="skill-level-item">
-                            <span class="skill-level-name">TypeScript</span>
-                            <span class="skill-level-percentage">90%</span>
-                        </div>
-                        <div class="skill-level-bar">
-                            <div class="skill-level-fill" style="width: 90%;"></div>
-                        </div>
-                        
-                        <div class="skill-level-item">
-                            <span class="skill-level-name">CSS/SCSS</span>
-                            <span class="skill-level-percentage">92%</span>
-                        </div>
-                        <div class="skill-level-bar">
-                            <div class="skill-level-fill" style="width: 92%;"></div>
-                        </div>
-                        
-                        <div class="skill-level-item">
-                            <span class="skill-level-name">Vue.js</span>
-                            <span class="skill-level-percentage">85%</span>
-                        </div>
-                        <div class="skill-level-bar">
-                            <div class="skill-level-fill" style="width: 85%;"></div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="skill-category">
-                    <h3 class="subsection-title">Backend Technologies</h3>
-                    <div class="skill-level">
-                        <div class="skill-level-item">
-                            <span class="skill-level-name">Node.js</span>
-                            <span class="skill-level-percentage">88%</span>
-                        </div>
-                        <div class="skill-level-bar">
-                            <div class="skill-level-fill" style="width: 88%;"></div>
-                        </div>
-                        
-                        <div class="skill-level-item">
-                            <span class="skill-level-name">Python</span>
-                            <span class="skill-level-percentage">82%</span>
-                        </div>
-                        <div class="skill-level-bar">
-                            <div class="skill-level-fill" style="width: 82%;"></div>
-                        </div>
-                        
-                        <div class="skill-level-item">
-                            <span class="skill-level-name">PostgreSQL</span>
-                            <span class="skill-level-percentage">85%</span>
-                        </div>
-                        <div class="skill-level-bar">
-                            <div class="skill-level-fill" style="width: 85%;"></div>
-                        </div>
-                        
-                        <div class="skill-level-item">
-                            <span class="skill-level-name">MongoDB</span>
-                            <span class="skill-level-percentage">80%</span>
-                        </div>
-                        <div class="skill-level-bar">
-                            <div class="skill-level-fill" style="width: 80%;"></div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="skill-category">
-                    <h3 class="subsection-title">Cloud & DevOps</h3>
-                    <div class="skill-level">
-                        <div class="skill-level-item">
-                            <span class="skill-level-name">AWS</span>
-                            <span class="skill-level-percentage">87%</span>
-                        </div>
-                        <div class="skill-level-bar">
-                            <div class="skill-level-fill" style="width: 87%;"></div>
-                        </div>
-                        
-                        <div class="skill-level-item">
-                            <span class="skill-level-name">Docker</span>
-                            <span class="skill-level-percentage">83%</span>
-                        </div>
-                        <div class="skill-level-bar">
-                            <div class="skill-level-fill" style="width: 83%;"></div>
-                        </div>
-                        
-                        <div class="skill-level-item">
-                            <span class="skill-level-name">CI/CD</span>
-                            <span class="skill-level-percentage">78%</span>
-                        </div>
-                        <div class="skill-level-bar">
-                            <div class="skill-level-fill" style="width: 78%;"></div>
-                        </div>
-                        
-                        <div class="skill-level-item">
-                            <span class="skill-level-name">Kubernetes</span>
-                            <span class="skill-level-percentage">72%</span>
-                        </div>
-                        <div class="skill-level-bar">
-                            <div class="skill-level-fill" style="width: 72%;"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Certifications -->
-        <section class="section">
-            <h2 class="section-title">Certifications</h2>
-            <div class="certifications-grid">
-                <div class="certification-item">
-                    <span class="certification-badge">🏆</span>
-                    <div class="certification-name">AWS Certified Solutions Architect</div>
-                    <div class="certification-issuer">Amazon Web Services</div>
-                    <div class="certification-date">2024</div>
-                </div>
-                
-                <div class="certification-item">
-                    <span class="certification-badge">⚛️</span>
-                    <div class="certification-name">React Developer Certification</div>
-                    <div class="certification-issuer">Meta (Facebook)</div>
-                    <div class="certification-date">2023</div>
-                </div>
-                
-                <div class="certification-item">
-                    <span class="certification-badge">🌐</span>
-                    <div class="certification-name">Full Stack Web Development</div>
-                    <div class="certification-issuer">Coding Bootcamp</div>
-                    <div class="certification-date">2021</div>
-                </div>
-                
-                <div class="certification-item">
-                    <span class="certification-badge">🔒</span>
-                    <div class="certification-name">Security+ Certification</div>
-                    <div class="certification-issuer">CompTIA</div>
-                    <div class="certification-date">2022</div>
-                </div>
-            </div>
-        </section>
 
         <!-- Tools & Software -->
         <section class="tools-section">
