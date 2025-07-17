@@ -11,12 +11,13 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     
+
     <style>
         :root {
             --primary: #0f172a;
             --secondary: #1e293b;
-            --accent: #3b92f6;
-            --accent-hover: #eb9c25;
+            --accent: #5493ce;
+            --accent-hover: #a7815d;
             --text: #f8fafc;
             --text-secondary: #cbd5e1;
             --text-muted: #64748b;
@@ -195,9 +196,8 @@
         .btn-secondary {
             background: transparent;
             color: var(--text);
-            border: 1px solid var(--border);
-            border-top: 1px solid var(--accent);
-            border-bottom: 1px solid var(--accent-hover);
+            border: 1px solid var(--accent-hover);
+
         }
 
         .btn-secondary:hover {
@@ -221,6 +221,7 @@
         }
 
         .hero {
+            border: 1px solid red;
             min-height: 60vh;
             display: flex;
             align-items: center;
@@ -237,16 +238,18 @@
 
         .hero-text p {
             font-size: 1.2rem;
+            
             color: var(--text-secondary);
             margin-bottom: 2rem;
             max-width: 600px;
         }
 
         .hero-image img {
-            width: 80%;
-            height: 80%;
-            max-width: 300px;
-            max-height: 300px;
+            padding-top: 5px;
+            width: 90%;
+            height: 90%;
+            max-width: 400px;
+            max-height: 400px;
             object-fit: cover;
             border-radius: 10px;
             box-shadow: var(--shadow-lg);
