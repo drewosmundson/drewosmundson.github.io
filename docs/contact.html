@@ -15,7 +15,7 @@
             --primary: #0f172a;
             --secondary: #1e293b;
             --accent: #5493ce;
-            --accent-hover: #a7815d;
+            --accent-hover: #b38356;
             --text: #f8fafc;
             --text-secondary: #cbd5e1;
             --text-muted: #64748b;
@@ -176,6 +176,14 @@
             font-weight: 700;
             text-decoration: none;
             color: var(--text);
+        }
+        .hover-lift {
+            transition: all 0.3s ease;
+        }
+
+        .hover-lift:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
         }
 
         .nav-links {
