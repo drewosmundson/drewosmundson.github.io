@@ -216,9 +216,7 @@ body {
 .btn-secondary {
     background: transparent;
     color: var(--text);
-    border: 1px solid var(--border);
-    border-top: 1px solid var(--accent);
-    border-bottom: 1px solid var(--accent-hover);
+    border: 1px solid var(--accent-hover);
 }
 
 .btn-secondary:hover {
