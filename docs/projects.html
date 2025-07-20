@@ -170,44 +170,46 @@
         .project-footer a:hover::after {
             opacity: 1;
         }
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 8px;
+    font-weight: 500;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 1rem;
+}
 
-        /* Buttons */
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.75rem 1.5rem;
-            border: none;
-            border-radius: 8px;
-            font-weight: 500;
-            text-decoration: none;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-size: 1rem;
-        }
+.btn-primary {
+    background: var(--accent);
+    color: white;
+}
 
-        .btn-primary {
-            background: var(--accent);
-            color: white;
-        }
+.btn-primary:hover {
+    background: var(--accent-hover);
+    box-shadow: var(--shadow-lg);
+}
 
-        .btn-primary:hover {
-            background: var(--accent-hover);
-            box-shadow: var(--shadow-lg);
-        }
+.btn-secondary {
+    background: transparent;
+    color: var(--text);
+    border: 1px solid var(--accent-hover);
+}
 
-        .btn-secondary {
-            background: transparent;
-            color: var(--text);
-            border: 1px solid var(--border);
-            border-top: 1px solid var(--accent);
-            border-bottom: 1px solid var(--accent-hover);
-        }
+.btn-secondary:hover {
+    background: var(--secondary);
+    box-shadow: var(--shadow-lg);
+}
 
-        .btn-secondary:hover {
-            background: var(--secondary);
-            box-shadow: var(--shadow-lg);
-        }
+.btn-group {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
 
         /* Layout */
         .main-content {
@@ -273,40 +275,34 @@
             border-radius: 12px;
             border-bottom: 1px solid var(--text-muted);
             box-shadow: var(--shadow-lg);
+                      box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.4);
             overflow: hidden;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             display: flex;
             flex-direction: column;
         }
 
-        .project-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.4);
-        }
+          .project-image {
+              width: 100%;
+              height: 200px;
+              background: var(--gradient);
+              color: white;
+              font-size: 1.2rem;
+              font-weight: 500;
+          }
 
-        .project-image {
-            width: 100%;
-            height: 200px;
-            background: var(--gradient);
-            color: white;
-            font-size: 1.2rem;
-            font-weight: 500;
-            position: relative;
-            overflow: hidden;
-        }
+          .project-image img {
+              width: 100%;
+              height: 100%;
+              object-fit: cover;
+              display: block;
+          }
 
-        .project-image::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.1) 50%, transparent 70%);
-            transform: translateX(-100%);
-            transition: transform 0.6s ease;
-        }
-
+          .project-image.text-only {
+              display: flex;
+              align-items: center;
+              justify-content: center;
+          }
         .project-card:hover .project-image::before {
             transform: translateX(100%);
         }
@@ -494,6 +490,66 @@
             
             <div class="projects-grid">
                 <!-- Featured Projects -->
+                  <div class="project-card">
+                    <div class="project-image">
+                        <img src="images/ottoproject.png" alt="Employee Scheduling System">
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Otto the Shepherd Dog</h3>
+                        <p class="project-description">A 3D herding simulation built in Unity featuring custom flocking AI based on Reynolds' Boid algorithm, NavMesh pathfinding with dynamic targets, and root-motion animation blending. Includes capsule collision logic, LOD optimization, and original sound design.
+
+</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Unity</span>
+                            <span class="tech-tag">C#</span>
+                            <span class="tech-tag">Physics</span>
+                        </div>
+                    </div>
+                    <div class="project-footer">
+                        <a href="#contact">See Project</a>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="images/ahoyio.png" alt="Employee Scheduling System">
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Ahoy.io</h3>
+                        <p class="project-description">A battle boat web game designed with the THREE.js graphics libray, with joinable lobbies,
+                           unique terrain generation, and real time interaction and visuals using Socket.io, </p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Socket.io</span>
+                            <span class="tech-tag">THREE.js</span>
+                            <span class="tech-tag">Express</span>
+                            <span class="tech-tag">node.js</span>
+                        </div>
+                    </div>
+                    <div class="project-footer">
+                        <a href="#contact">See Project</a>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="images/ahoyio.png" alt="Employee Scheduling System">
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Employee Scheduling System</h3>
+                        <p class="project-description">A full-stack employee scheduling application designed for mobile food service businesses. Calendar-based drag-and-drop interface with React and 
+ASP.NET Core backend with schedule storage using MongoDB, and user authentication. </p>
+                        <div class="project-tech">
+                            <span class="tech-tag">React</span>
+                            <span class="tech-tag">Node.js</span>
+                            <span class="tech-tag">MongoDB</span>
+                            <span class="tech-tag">C#</span>
+                            <span class="tech-tag">ASP.NET</span>
+                        </div>
+                    </div>
+                    <div class="project-footer">
+                        <a href="#contact">See Project</a>
+                    </div>
+                </div>
                 <div class="project-card">
                     <div class="project-image flex-center">Employee Scheduling System</div>
                     <div class="project-content">

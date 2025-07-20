@@ -211,45 +211,46 @@
         .nav-links a:hover::after {
             opacity: 1;
         }
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 8px;
+    font-weight: 500;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 1rem;
+}
 
-        /* Buttons */
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.75rem 1.5rem;
-            border: none;
-            border-radius: 8px;
-            font-weight: 500;
-            text-decoration: none;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-size: 1rem;
-        }
+.btn-primary {
+    background: var(--accent);
+    color: white;
+}
 
-        .btn-primary {
-            background: var(--accent);
-            color: white;
-        }
+.btn-primary:hover {
+    background: var(--accent-hover);
+    box-shadow: var(--shadow-lg);
+}
 
-        .btn-primary:hover {
-            background: var(--accent-hover);
-            box-shadow: var(--shadow-lg);
-        }
+.btn-secondary {
+    background: transparent;
+    color: var(--text);
+    border: 1px solid var(--accent-hover);
+}
 
-        .btn-secondary {
-            background: transparent;
-            color: var(--text);
-            border: 1px solid var(--border);
-            border-top: 1px solid var(--accent);
-            border-bottom: 1px solid var(--accent-hover);
-        }
+.btn-secondary:hover {
+    background: var(--secondary);
+    box-shadow: var(--shadow-lg);
+}
 
-        .btn-secondary:hover {
-            background: var(--secondary);
-            box-shadow: var(--shadow-lg);
-        }
-
+.btn-group {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
         /* Layout */
         .main-content {
             margin-top: 80px;
@@ -325,9 +326,6 @@
             transition: transform 0.3s ease;
         }
 
-        .skill-category:hover {
-            transform: translateY(-5px);
-        }
 
         .skill-category-icon {
             font-size: 2.5rem;
@@ -357,12 +355,6 @@
             font-size: 0.9rem;
             font-weight: 500;
             transition: all 0.3s ease;
-        }
-
-        .skill-item:hover {
-            background: rgba(59, 146, 246, 0.2);
-            border-color: var(--accent);
-            transform: translateY(-2px);
         }
 
         /* Skill Level Bars */
@@ -691,9 +683,6 @@
                         <li class="skill-item">Vercel</li>
                     </ul>
                 </div>
-            </div>
-            <div class="centered-links">
-                <a href="skills.html" class="btn btn-primary hover-lift">See my experience -></a>
             </div>
         </section>
 
