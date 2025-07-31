@@ -328,7 +328,6 @@ body {
 
 .about-intro {
     display: grid;
-    grid-template-columns: 1fr 280px;
     gap: 3rem;
     align-items: start;
 }
