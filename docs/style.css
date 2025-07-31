@@ -323,13 +323,14 @@ body {
 
 .about-hero {
     padding: 2rem 0;
-    margin-bottom: 2rem;
+
 }
 
 .about-intro {
     display: grid;
     gap: 3rem;
     align-items: start;
+
 }
 
 .about-text {
@@ -337,32 +338,17 @@ body {
     color: var(--text-secondary);
     line-height: 1.8;
     text-align: center;
+
 }
 
-.about-text p {
-    margin-bottom: 2rem;
-}
 
-.about-image {
-    display: flex;
-    justify-content: center;
-}
 
-.about-image img {
-    width: 100%;
-    max-width: 280px;
-    height: auto;
-    border-radius: 12px;
-    box-shadow: var(--shadow-lg);
-    border: 1px solid var(--text-muted);
-}
 
 /* Content Grid for About Page */
 .content-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 3rem;
-    margin-top: 2rem;
 }
 
 .content-section {
