@@ -86,7 +86,7 @@ body {
 .title {
     font-size: clamp(2rem, 4vw, 2.5rem);
     font-weight: 700;
-    margin-bottom: 3rem;
+    margin-bottom: 2rem;
     text-align: center;
 }
 
@@ -336,10 +336,11 @@ body {
     font-size: 1.1rem;
     color: var(--text-secondary);
     line-height: 1.8;
+    text-align: center;
 }
 
 .about-text p {
-    margin-bottom: 1.5rem;
+    margin-bottom: 2rem;
 }
 
 .about-image {
