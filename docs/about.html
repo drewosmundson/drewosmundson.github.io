@@ -97,7 +97,7 @@
         .hero-title {
             font-size: clamp(2.5rem, 5vw, 4rem);
             font-weight: 700;
-            margin-bottom: 1.5rem;
+
             line-height: 1.2;
         }
 
@@ -107,7 +107,7 @@
             justify-content: center;
             font-size: clamp(1.5rem, 3vw, 2rem);
             font-weight: 600;
-            margin-bottom: 2rem;
+
             color: var(--text);
         }
 
@@ -264,25 +264,20 @@
             opacity: 1;
         }
 
-        /* About Page Specific Styles */
         .about-hero {
             padding: 2rem 0;
         }
 
-        .about-intro {
-            display: grid;
-            gap: 3rem;
-            align-items: start;
-        }
-
-        .about-text {
+        .subtitle {
             font-size: 1.1rem;
             color: var(--text-secondary);
-            line-height: 1.8;
             text-align: center;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
-        /* Content Grid for About Page */
+
         .content-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -481,14 +476,13 @@
         <section class="about-hero">
             <a href="index.html" class="back-link"> <- Back to Home</a>
             <h1 class="title gradient-text">About Me</h1>
-            <div class="about-intro">
-                <div class="about-text">
+            <div class="subtitle">
                     <p>I'm a passionate full-stack developer with a love for creating innovative web solutions that make a real difference. With years of experience in modern web technologies, I specialize in building scalable, user-friendly applications that combine beautiful design with robust functionality.</p>
                     
                     <p>My journey in software development started in my 8th grade STEM class. We were tasked to make a simple game using Scratch. I fell in love with the challenge and the rush of finally getting a loop block to work. Programming my TI-84 in High School - I found math so tedious I created multiple programs for finding the area of a circle, angles, to help me solve geometry questions was the next step and from then I knew that programming was what I wanted to do with my life.</p>
                     
                     <p>When I'm not coding, you can find me exploring new technologies, contributing to open-source projects, or enjoying the outdoors. I'm always excited to take on new challenges and collaborate with others who share my passion for building amazing things.</p>
-                </div>
+
             </div>
         </section>
 
