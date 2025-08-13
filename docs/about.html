@@ -107,7 +107,7 @@
             justify-content: center;
             font-size: clamp(1.5rem, 3vw, 2rem);
             font-weight: 600;
-
+            margin-bottom: 1.5rem;
             color: var(--text);
         }
 
@@ -305,14 +305,14 @@
             left: 0;
             top: 0;
             bottom: 0;
-            width: 2px;
+            width: 4px;
             background: var(--gradient);
         }
 
         .timeline-item {
             position: relative;
             margin-bottom: 2rem;
-            padding-left: 1.5rem;
+        
         }
 
         .timeline-item::before {
@@ -322,9 +322,6 @@
             top: 0.5rem;
             width: 12px;
             height: 12px;
-            background: var(--accent);
-            border-radius: 50%;
-            border: 2px solid var(--primary);
         }
 
         .timeline-date {
@@ -345,12 +342,15 @@
             color: var(--text-secondary);
             font-size: 0.95rem;
             margin-bottom: 0.75rem;
+            
         }
 
         .timeline-description {
             color: var(--text-secondary);
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             line-height: 1.6;
+            padding-left: 1.5rem;
+            margin-bottom: 2.5rem;
         }
 
         /* Footer */
@@ -477,11 +477,12 @@
             <a href="index.html" class="back-link"> <- Back to Home</a>
             <h1 class="title gradient-text">About Me</h1>
             <div class="subtitle">
-                    <p>I'm a passionate full-stack developer with a love for creating innovative web solutions that make a real difference. With years of experience in modern web technologies, I specialize in building scalable, user-friendly applications that combine beautiful design with robust functionality.</p>
-                    
-                    <p>My journey in software development started in my 8th grade STEM class. We were tasked to make a simple game using Scratch. I fell in love with the challenge and the rush of finally getting a loop block to work. Programming my TI-84 in High School - I found math so tedious I created multiple programs for finding the area of a circle, angles, to help me solve geometry questions was the next step and from then I knew that programming was what I wanted to do with my life.</p>
-                    
-                    <p>When I'm not coding, you can find me exploring new technologies, contributing to open-source projects, or enjoying the outdoors. I'm always excited to take on new challenges and collaborate with others who share my passion for building amazing things.</p>
+                    <p>My programming experience started when I was in high school. I created simple programs for my TI-84 calculator such as finding areas of triangles, missing angles and quadratic formula automation etc. I attended the University of Minnesota for computer science where I learned how to collaborate in teams, use version control, build my own projects, and extend and manipulate large codebases.
+                    <p></p>
+                    To earn tuition money for college I worked at various coffee shops and after graduating with a  Computer Science degree and gettting a minor in management I had the opportunity to become the general manager of a Starbucks. Although it was a different career path than I intended I felt it was a great opportunity to learn and grow having so much responsibility. Wanting to move to a role with work life balance I started working as a marketing analyst at Fingerhut. I worked with databases using SQL pulling and analizing data coordinated with my team to roll out new promotions based on data.
+                    <p></p>
+                    Currently I am working as a freelance developer. I working with small businesses in Minnesota to update their websites and creating a small business friendly free scheduling system for and created a classroom kahoot like buzzer for classrooms.
+                    </p>
 
             </div>
         </section>
@@ -494,11 +495,11 @@
                     <h2 class="section-title">Experience</h2>
                     <div class="timeline">
                         <div class="timeline-item">
-                            <div class="timeline-date">November 2024 - Present</div>
+                            <div class="timeline-date">November 2024 - April 2025</div>
                             <div class="timeline-title">Analytical Marketing Specialist</div>
                             <div class="timeline-subtitle">Bluestem Brands, Eden Prairie, MN</div>
                             <div class="timeline-description">
-                                Leading data-driven marketing initiatives using SQL for performance analysis and reporting. Migrated dashboards from Tableau to Power BI, improving data visualization and accessibility. Coordinated cross-functional campaigns while managing multiple promotions simultaneously, demonstrating strong project management and technical skills.
+                              I collaborated with multiple teams to plan and execute many concurrent site and email marketing campaigns, making use of project management and technical problem solving skills. Using SQL, I extracted performance datasets, identified trends in click through rates, conversion rates, and ROI. I also automated parts of the promo code request process and migrated performance dashboards from Tableau to Power BI improving accessibility.
                             </div>
                         </div>
                         
@@ -507,16 +508,18 @@
                             <div class="timeline-title">Team Leader</div>
                             <div class="timeline-subtitle">Target (Starbucks), Roseville, MN</div>
                             <div class="timeline-description">
-                                Managed a team of 14 members while implementing data-driven process improvements. Analyzed hourly sales data to optimize operations and reduce waste by 50%. Led training initiatives that improved performance metrics by 40%, demonstrating leadership and analytical problem-solving abilities.
+                              I led a team of 14 members with a focus on training initiatives that resulted in improving our guest connection score by 40%. By using sales data, I optimized payroll allocation, created schedules, and strategically hired new employees based on projected needs. I also implemented process improvements that reduced waste by 50% and coached team members to promote food items during low volume periods. These changes increased average basket size by 15% and secured additional payroll allocation.
                             </div>
+
+    
                         </div>
                         
                         <div class="timeline-item">
                             <div class="timeline-date">2017 - 2024</div>
-                            <div class="timeline-title">Customer Service & Operations</div>
+                            <div class="timeline-title">Customer Service</div>
                             <div class="timeline-subtitle">Various Retail Positions</div>
                             <div class="timeline-description">
-                                Built 7+ years of customer service experience while developing strong communication, problem-solving, and team collaboration skills. Consistently demonstrated ability to learn new systems quickly and adapt to changing business needs - qualities essential for software development roles.
+                              7+ years of customer service experience in service enviroments. In these positions I developed strong communication, problem-solving, and team collaboration skills.
                             </div>
                         </div>
                     </div>
@@ -526,11 +529,12 @@
                     <h2 class="section-title">Education</h2>
                     <div class="timeline">
                         <div class="timeline-item">
-                            <div class="timeline-date">July 2025 - In Progress</div>
-                            <div class="timeline-title">Full-Stack Web Development</div>
+                            <div class="timeline-date">August 2025 - Present</div>
+                            <div class="timeline-title">Software Testing and Automation Specialization</div>
                             <div class="timeline-subtitle">Certificate</div>
                             <div class="timeline-description">
-                                Intensive 12-week program covering modern web development technologies including React, Node.js, databases, and deployment strategies.
+                                An 8 week certificate from the University of Minnesota. This course covers: Software Testing, 
+                                Test Automation, Acceptance Testing, Test Planning, Regression Testing, Unit Testing and Testing Tools.
                             </div>
                         </div>
                         
@@ -549,13 +553,9 @@
 
         <!-- Call to Action -->
         <section class="section">
-            <h2 class="section-title">Let's Work Together</h2>
-            <p style="color: var(--text-secondary); margin-bottom: 2rem; font-size: 1.1rem;">
-                I'm always excited to take on new challenges and collaborate on interesting projects. Whether you need a full-stack application, want to discuss a technical problem, or just want to chat about web development, I'd love to hear from you.
-            </p>
-            <div style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
-                <a href="contact.html" class="btn btn-primary hover-lift">Get In Touch</a>
-                <a href="projects.html" class="btn btn-secondary hover-lift">View My Work</a>
+            <div style="display: flex; margin-top: 2rem; justify-content: center; gap: 1rem; flex-wrap: wrap;">
+                <a href="contact.html" class="btn btn-primary hover-lift">View Projects -></a>
+                <a href="" class="btn btn-secondary hover-lift">Download Resume</a>
             </div>
         </section>
     </main>
