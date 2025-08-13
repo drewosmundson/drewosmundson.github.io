@@ -180,7 +180,13 @@
             opacity: 1;
         }
 
-        /* Buttons */
+        .btn-group {
+          margin-top: 3rem;
+          margin-bottom: 3rem;
+          display: flex;
+          justify-content: center;
+          gap: 1rem;
+        }
         .btn {
             display: inline-flex;
             align-items: center;
@@ -193,8 +199,12 @@
             cursor: pointer;
             transition: all 0.3s ease;
             font-size: 1rem;
+            flex: 1; /* Let them grow equally in the row */
+            min-width: 200px; /* Same width regardless of text length */
+            text-align: center; /* Keep text centered */
+            justify-content: center; /* Center icon + text inside */
+            max-width: 200px;
         }
-
         .btn-primary {
             background: var(--accent);
             color: white;
@@ -531,7 +541,7 @@
                         <div class="timeline-item">
                             <div class="timeline-date">August 2025 - Present</div>
                             <div class="timeline-title">Software Testing and Automation Specialization</div>
-                            <div class="timeline-subtitle">Certificate</div>
+                            <div class="timeline-subtitle">Certificate (In Progress)</div>
                             <div class="timeline-description">
                                 An 8 week certificate from the University of Minnesota. This course covers: Software Testing, 
                                 Test Automation, Acceptance Testing, Test Planning, Regression Testing, Unit Testing and Testing Tools.
@@ -553,8 +563,8 @@
 
         <!-- Call to Action -->
         <section class="section">
-            <div style="display: flex; margin-top: 2rem; justify-content: center; gap: 1rem; flex-wrap: wrap;">
-                <a href="contact.html" class="btn btn-primary hover-lift">View Projects -></a>
+            <div class="btn-group">
+                <a href="projects.html" class="btn btn-primary hover-lift">See All Projects -></a>
                 <a href="" class="btn btn-secondary hover-lift">Download Resume</a>
             </div>
         </section>

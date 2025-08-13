@@ -214,49 +214,61 @@
         .nav-links a:hover::after {
             opacity: 1;
         }
-.btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.75rem 1.5rem;
-    border: none;
-    border-radius: 8px;
-    font-weight: 500;
-    text-decoration: none;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    font-size: 1rem;
-}
 
-.btn-primary {
-    background: var(--accent);
-    color: white;
-}
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 8px;
+            font-weight: 500;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+            flex: 1; /* Let them grow equally in the row */
+            min-width: 200px; /* Same width regardless of text length */
+            text-align: center; /* Keep text centered */
+            justify-content: center; /* Center icon + text inside */
+            max-width: 200px;
+        }
 
-.btn-primary:hover {
-    background: var(--accent-hover);
-    box-shadow: var(--shadow-lg);
-}
+        .btn-primary {
+            background: var(--accent);
+            color: white;
+        }
 
-.btn-secondary {
-    background: transparent;
-    color: var(--text);
-    border: 1px solid var(--accent-hover);
-}
+        .btn-primary:hover {
+            background: var(--accent-hover);
+            box-shadow: var(--shadow-lg);
+        }
 
-.btn-secondary:hover {
-    background: var(--secondary);
-    box-shadow: var(--shadow-lg);
-}
+        .btn-secondary {
+            background: transparent;
+            color: var(--text);
+            border: 1px solid var(--accent-hover);
+        }
 
-.btn-group {
-    display: flex;
-    gap: 1rem;
-    flex-wrap: wrap;
-}
+        .btn-secondary:hover {
+            background: var(--secondary);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .btn-group {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
         /* Layout */
         .main-content {
             margin-top: 80px;
+        }
+
+        .section {
+            padding: 4rem 0;
         }
 
         .back-link {
@@ -554,48 +566,47 @@
         <section class="tools-section">
             <div class="tools-grid">
                 <div class="tool-category">
-                    <h3 class="tool-category-title">Development Environment</h3>
+                    <h3 class="tool-category-title">Languages</h3>
                     <ul class="tool-list">
-                        <li> Visual Studio Code</li>
-                        <li> Git </li>
-                        <li> Bash</li>
-                        <li> Git</li>
+                        <li>Javascript</li>
+                        <li></li>
+                        <li> </li>
+                        <li> </li>
                         <li></li>
                         <li></li>
                     </ul>
                 </div>
                 
                 <div class="tool-category">
-                    <h3 class="tool-category-title">Design & Prototyping</h3>
+                    <h3 class="tool-category-title">Frameworks and Libraies</h3>
                     <ul class="tool-list">
-                        <li>Figma</li>
-                        <li>Adobe</li>
-                        <li>Sketch</li>
-                        <li>Canva</li>
-                        <li>Photoshop</li>
-                        <li>Illustrator</li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                    </ul>
+                </div>
+                
+                <div class="tool-category">
+                    <h3 class="tool-category-title">Tools</h3>
+                    <ul class="tool-list">
+                        <li>Git</li>
+                        <li>Docker</li>
+                        <li></li>
+                        <li></li>
                     </ul>
                 </div>
                 
                 <div class="tool-category">
                     <h3 class="tool-category-title">Project Management</h3>
                     <ul class="tool-list">
-                        <li>Jira</li>
-                        <li>Monday</li>
-                        <li>Slack</li>
                         <li>Microsoft Teams</li>
-                    </ul>
-                </div>
-                
-                <div class="tool-category">
-                    <h3 class="tool-category-title">Testing & Monitoring</h3>
-                    <ul class="tool-list">
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                        <li></li>
+                        <li>Customer Service</li>
+                        <li>Jira</li>
+                        <li>Slack</li>
+                        <li>Discord</li>
                     </ul>
                 </div>
             </div>
@@ -603,11 +614,7 @@
 
         <!-- Call to Action -->
         <section class="section">
-            <div class="subtitle">
-                    <p> If have a question for me about a project or would like to connect for any other reason then use the links below. I am always interested in new opertunites.
-                    </p>
-            </div>
-            <div style="display: flex; margin-top: 3rem; justify-content: center; gap: 1rem; flex-wrap: wrap;">
+            <div class="btn-group">
                 <a href="contact.html" class="btn btn-primary hover-lift">Contact Me -></a>
                 <a href="" class="btn btn-secondary hover-lift">Download Resume</a>
             </div>

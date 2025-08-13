@@ -48,7 +48,12 @@
             padding: 2rem;
             box-shadow: var(--shadow-lg);
         }
- .btn {
+        .btn-group {
+          display: flex;
+          justify-content: center;
+          gap: 1rem;
+        }
+.btn {
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
@@ -60,8 +65,12 @@
     cursor: pointer;
     transition: all 0.3s ease;
     font-size: 1rem;
+    flex: 1; /* Let them grow equally in the row */
+    min-width: 200px; /* Same width regardless of text length */
+    text-align: center; /* Keep text centered */
+    justify-content: center; /* Center icon + text inside */
+    max-width: 200px;
 }
-
 .btn-primary {
     background: var(--accent);
     color: white;
@@ -568,7 +577,7 @@
                 </div>
                 <div class="centered-links">
               </div>
-              <div style="display: flex; margin-top: 5rem; justify-content: center; gap: 1rem; flex-wrap: wrap;">
+              <div style="display: flex; margin-top: 8rem; margin-bottom: 2rem ;justify-content: center; gap: 1rem; flex-wrap: wrap;">
                 <a href="" class="btn btn-primary hover-lift">Download Resume</a>
             </div>
             </section>
