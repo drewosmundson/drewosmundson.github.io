@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="nologies - Drew Osmundson's technical expertise and capabilities">
+    <meta name="description" content="Technologies - Drew Osmundson's technical expertise and capabilities">
     <title>Skills - Drew Osmundson</title>
     
     <!-- Fonts -->
@@ -38,6 +38,7 @@
             color: var(--text);
             line-height: 1.6;
             overflow-x: hidden;
+            min-height: 100vh;
         }
 
         /* Common patterns */
@@ -46,62 +47,13 @@
             border: 1px solid var(--border);
             border-radius: 12px;
             padding: 2rem;
-            border-bottom: 1px solid var(--text-muted);
             box-shadow: var(--shadow-lg);
-            
         }
 
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 2rem;
-            
-        }
-       /* Skills */
-        .skills-container {
-            display: grid;
-            gap: 2rem;
-            background: var(--secondary);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 1rem;
-            margin-bottom: 2rem;
-            border-bottom: 1px solid var(--text-muted);
-
-        }
-
-        .skill-category {
-            background: var(--primary);
-            padding: 1.5rem;
-            border-radius: 10px;
-            border-top: 1px solid var(--accent);
-            border-bottom: 1px solid var(--accent-hover);
-            box-shadow: var(--shadow-lg);
-        }
-
-        .skill-category h3 {
-            font-size: 1.55rem;
-            margin-bottom: 1rem;
-            color: var(--text);
-        }
-
-        .skill-list {
-            display: flex;
-            flex-wrap: wrap;
-            list-style: none;
-            gap: 3rem;
-            margin-top: 1rem;
-        }
-
-        .skill-item {
-            font-size: 1.25rem;
-            color: var(--text-secondary);
-        }
-
-        .flex-center {
-            display: flex;
-            align-items: center;
-            justify-content: center;
         }
 
         .gradient-text {
@@ -124,26 +76,8 @@
         .title {
             font-size: clamp(2rem, 4vw, 2.5rem);
             font-weight: 700;
-            margin-bottom: 2rem;
+            margin-bottom: 3rem;
             text-align: center;
-            
-        }
-
-        .section-title {
-            margin-bottom: 2rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: clamp(1.5rem, 3vw, 2rem);
-            font-weight: 600;
-            color: var(--text);
-
-        }
-
-        .subsection-title {
-            font-size: 1.25rem;
-            font-weight: 600;
-            color: var(--text);
         }
 
         /* Navigation */
@@ -169,6 +103,7 @@
             font-size: 1.75rem;
             font-weight: 700;
             text-decoration: none;
+            color: var(--text);
         }
 
         .nav-links {
@@ -227,10 +162,10 @@
             cursor: pointer;
             transition: all 0.3s ease;
             font-size: 1rem;
-            flex: 1; /* Let them grow equally in the row */
-            min-width: 200px; /* Same width regardless of text length */
-            text-align: center; /* Keep text centered */
-            justify-content: center; /* Center icon + text inside */
+            flex: 1;
+            min-width: 200px;
+            text-align: center;
+            justify-content: center;
             max-width: 200px;
         }
 
@@ -265,6 +200,9 @@
         /* Layout */
         .main-content {
             margin-top: 80px;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
         }
 
         .section {
@@ -286,6 +224,7 @@
         .back-link:hover {
             color: var(--accent);
         }
+
         .back-link::before{
             opacity: 0;
             content: '{ ';
@@ -307,88 +246,24 @@
             margin-bottom: 2rem;
         }
 
-        .subtitle {
-            font-size: 1.1rem;
-            color: var(--text-secondary);
-            text-align: center;
-            margin-bottom: 4rem;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        /* Certifications */
-        .certifications-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .certification-item {
-            background: var(--secondary);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 1.5rem;
-            text-align: center;
-            border-bottom: 1px solid var(--text-muted);
-            box-shadow: var(--shadow-lg);
-            transition: transform 0.3s ease;
-        }
-
-        .certification-item:hover {
-            transform: translateY(-5px);
-        }
-
-        .certification-badge {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            display: block;
-        }
-
-        .certification-name {
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: var(--text);
-            margin-bottom: 0.5rem;
-        }
-
-        .certification-issuer {
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .certification-date {
-            color: var(--accent);
-            font-size: 0.85rem;
-            font-weight: 500;
-        }
-
-        /* Tools Section */
-        .tools-section {
-            margin-top: 8rem;
-        }
-
+        /* Tools & Software */
         .tools-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 3rem;
             margin-top: 2rem;
-            margin-bottom: 8rem;
         }
 
         .tool-category {
             background: var(--secondary);
             border: 1px solid var(--border);
             border-radius: 12px;
-            padding: 1.5rem;
-            border-bottom: 1px solid var(--text-muted);
+            padding: 2rem;
             box-shadow: var(--shadow-lg);
         }
 
         .tool-category-title {
-            font-size: 1.1rem;
+            font-size: 1.25rem;
             font-weight: 600;
             color: var(--text);
             margin-bottom: 1rem;
@@ -400,18 +275,38 @@
 
         .tool-list li {
             color: var(--text-secondary);
-            font-size: 0.9rem;
-            margin-bottom: 0.5rem;
+            margin-bottom: 1.5rem;
             position: relative;
         }
 
+        .tool-list li strong {
+            color: var(--text);
+            font-size: 1rem;
+            font-weight: 500;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
 
+        .tool-list p {
+            color: var(--text-secondary);
+            margin: 0;
+            line-height: 1.6;
+            font-size: 0.9rem;
+        }
+
+        .centered-links {
+            margin-top: 2rem;
+            display: flex;
+            justify-content: center;
+        }
+
+    
         /* Footer */
         .footer {
             background: var(--secondary);
             border-top: 1px solid var(--border);
             padding: 2rem 0;
-            margin-top: 8rem;
+            margin-top: 4rem;
         }
 
         .footer-content {
@@ -475,64 +370,29 @@
             .container {
                 padding: 0 1rem;
             }
-
             .nav-links {
-                gap: 1rem;
+                gap: 1.4rem;
             }
-
-            .skills-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .certifications-grid {
-                grid-template-columns: 1fr;
-            }
-
             .tools-grid {
                 grid-template-columns: 1fr;
+                gap: 2rem;
             }
 
+            .card {
+                padding: 1.5rem;
+            }
+
+            .tool-category {
+                padding: 1.5rem;
+            }
             .footer-content {
                 flex-direction: column;
                 text-align: center;
             }
 
             .footer-links {
-                flex-direction: column;
                 gap: 1rem;
             }
-        }
-
-        @media (max-width: 480px) {
-            .card {
-                padding: 1.5rem;
-            }
-
-            .skill-category {
-                padding: 1.5rem;
-            }
-
-            .certification-item {
-                padding: 1.25rem;
-            }
-
-            .tool-category {
-                padding: 1.25rem;
-            }
-        }
-
-        /* Animation for skill bars */
-        @keyframes fillBar {
-            from {
-                width: 0%;
-            }
-            to {
-                width: var(--target-width);
-            }
-        }
-
-        .skill-level-fill.animate {
-            animation: fillBar 0.8s ease forwards;
         }
     </style>
 </head>
@@ -552,74 +412,81 @@
     </nav>
 
     <!-- Main Content -->
-    <main class="main-content container">
-        <!-- Skills Hero -->
-        <section class="skills-hero">
-            <a href="index.html" class="back-link"> <- Back to Home</a>
-            <h1 class="title gradient-text">Skills & Technologies</h1>
-            <div class="subtitle">
-             
-            </div>
-        </section>
+    <main class="main-content">
+        <div class="container">
+            <!-- Skills Hero -->
+            <section class="skills-hero">
+                <a href="index.html" class="back-link"> <- Back to Home</a>
+                <h1 class="title gradient-text">Skills & Technologies</h1>
+                
+                <!-- Tools & Software -->
+                <div class="tools-grid">
+                    <div class="tool-category card">
+                        <h3 class="tool-category-title">Languages</h3>
+                        <ul class="tool-list">
+                            <li>
+                                <strong>Javascript</strong>
+                                <p>I have been using javascript for two years first by exploring the Electron framework then moving onto web applications and server systems using Node and Express</p>
+                            </li>
+                            <li>
+                                <strong>C#</strong>
+                                <p>I started using C# my Senior year of College to learn scripting in Unity. Although I have more experience with Java I prefer C# as it can be used as a Scripting in Unity, Backends with .NET, and as a general purpose OOP language. I would like to delve deeper into .NET so I can write backends in C# with javascript frontend</p>
+                            </li>
+                            <li>
+                                <strong>Python</strong>
+                                <p>As my first programming language, I have used Python for many applications for College projects including a 2048 game solver and the logic for our Baxter Robot Tic-Tac-Toe solver. I also have classroom experience using the PyTorch and Tensor Flow Libraries.</p>
+                            </li>
+                            <li>
+                                <strong>SQL</strong>
+                                <p>I have used SQL professionally modifying scripts to pull updated daily promotion performance data and writing new scripts to clone existing Tableau dashboards to port them to PowerBI. I also have SQL experience in my databases design university course.</p>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div class="tool-category card">
+                        <h3 class="tool-category-title">Frameworks and Libraries</h3>
+                        <ul class="tool-list">
+                            <li><strong>Node.js</strong></li>
+                            <li><strong>Express</strong></li>
+                            <li><strong>Socket.io</strong></li>
+                            <li><strong>.NET</strong></li>
+                            <li><strong>React</strong></li>
+                            <li><strong>PyTorch</strong></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="tool-category card">
+                        <h3 class="tool-category-title">Tools</h3>
+                        <ul class="tool-list">
+                            <li><strong>Git</strong></li>
+                            <li><strong>Visual Studio Code</strong></li>
+                            <li><strong>Docker</strong></li>
+                            <li><strong>Unity</strong></li>
+                            <li><strong>PowerBI</strong></li>
+                            <li><strong>Tableau</strong></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="tool-category card">
+                        <h3 class="tool-category-title">Project Management</h3>
+                        <ul class="tool-list">
+                            <li><strong>Microsoft Teams</strong></li>
+                            <li><strong>Customer Service</strong></li>
+                            <li><strong>Jira</strong></li>
+                            <li><strong>Slack</strong></li>
+                            <li><strong>Discord</strong></li>
+                        </ul>
+                    </div>
+                </div>
 
-        <!-- Tools & Software -->
-        <section class="tools-section">
-            <div class="tools-grid">
-                <div class="tool-category">
-                    <h3 class="tool-category-title">Languages</h3>
-                    <ul class="tool-list">
-                        <li>Javascript</li>
-                        <li></li>
-                        <li> </li>
-                        <li> </li>
-                        <li></li>
-                        <li></li>
-                    </ul>
+                <div style="display: flex; margin-top: 8rem; margin-bottom: 2rem; justify-content: center; gap: 1rem; flex-wrap: wrap;">
+                    <a href="contact.html" class="btn btn-primary hover-lift">Contact Me -></a>
+                    <a href="" class="btn btn-secondary hover-lift">Download Resume</a>
                 </div>
-                
-                <div class="tool-category">
-                    <h3 class="tool-category-title">Frameworks and Libraies</h3>
-                    <ul class="tool-list">
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                    </ul>
-                </div>
-                
-                <div class="tool-category">
-                    <h3 class="tool-category-title">Tools</h3>
-                    <ul class="tool-list">
-                        <li>Git</li>
-                        <li>Docker</li>
-                        <li></li>
-                        <li></li>
-                    </ul>
-                </div>
-                
-                <div class="tool-category">
-                    <h3 class="tool-category-title">Project Management</h3>
-                    <ul class="tool-list">
-                        <li>Microsoft Teams</li>
-                        <li>Customer Service</li>
-                        <li>Jira</li>
-                        <li>Slack</li>
-                        <li>Discord</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-
-        <!-- Call to Action -->
-        <section class="section">
-            <div class="btn-group">
-                <a href="contact.html" class="btn btn-primary hover-lift">Contact Me -></a>
-                <a href="" class="btn btn-secondary hover-lift">Download Resume</a>
-            </div>
-        </section>
+            </section>
+        </div>
     </main>
+
     <footer class="footer">
         <div class="footer-content container">
             <ul class="footer-links">
