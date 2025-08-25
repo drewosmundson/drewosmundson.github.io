@@ -253,6 +253,11 @@
             gap: 3rem;
             margin-top: 2rem;
         }
+        .tools-grid > :nth-child(3):last-child {
+            grid-column: 1 / -1;     /* spans across both columns */
+            justify-self: center;    /* center within that row */
+            min-width: 50%;
+        }
 
         .tool-category {
             background: var(--secondary);
@@ -260,6 +265,14 @@
             border-radius: 12px;
             padding: 2rem;
             box-shadow: var(--shadow-lg);
+        }
+        .tool-category strong {
+          padding-left: 1rem;
+          padding-right: 1rem;
+        }
+        .tool-category p {
+          padding-left: 2rem;
+          padding-right: 2rem;
         }
 
         .tool-category-title {
@@ -393,6 +406,9 @@
             .footer-links {
                 gap: 1rem;
             }
+            .tools-grid > :nth-child(3):last-child {
+              min-width: 100%;
+            }
         }
     </style>
 </head>
@@ -420,40 +436,11 @@
                 <h1 class="title gradient-text">Skills & Technologies</h1>
                 
                 <!-- Tools & Software -->
+
+
                 <div class="tools-grid">
-                    <div class="tool-category card">
-                        <h3 class="tool-category-title">Languages</h3>
-                        <ul class="tool-list">
-                            <li>
-                                <strong>Javascript</strong>
-                                <p>I have been using javascript for two years first by exploring the Electron framework then moving onto web applications and server systems using Node and Express</p>
-                            </li>
-                            <li>
-                                <strong>C#</strong>
-                                <p>I started using C# my Senior year of College to learn scripting in Unity. Although I have more experience with Java I prefer C# as it can be used as a Scripting in Unity, Backends with .NET, and as a general purpose OOP language. I would like to delve deeper into .NET so I can write backends in C# with javascript frontend</p>
-                            </li>
-                            <li>
-                                <strong>Python</strong>
-                                <p>As my first programming language, I have used Python for many applications for College projects including a 2048 game solver and the logic for our Baxter Robot Tic-Tac-Toe solver. I also have classroom experience using the PyTorch and Tensor Flow Libraries.</p>
-                            </li>
-                            <li>
-                                <strong>SQL</strong>
-                                <p>I have used SQL professionally modifying scripts to pull updated daily promotion performance data and writing new scripts to clone existing Tableau dashboards to port them to PowerBI. I also have SQL experience in my databases design university course.</p>
-                            </li>
-                        </ul>
-                    </div>
-                  
-                    <div class="tool-category card">
-                        <h3 class="tool-category-title">Testing Strategies</h3>
-                        <ul class="tool-list">
-                            <li><strong></strong></li>
-                            <li><strong></strong></li>
-                            <li><strong></strong></li>
-                            <li><strong></strong></li>
-                            <li><strong></strong></li>
-                            <li><strong></strong></li>
-                        </ul>
-                    </div>
+
+                
 
                     <div class="tool-category card">
                         <h3 class="tool-category-title">Frameworks & Libraries</h3>
@@ -477,6 +464,28 @@
                             <li><strong>Visual Studio Code</strong></li>
                             <li><strong>Microsoft Teams</strong></li>
                             <li><strong>Discord</strong></li>
+                        </ul>
+                    </div>
+
+                     <div class="tool-category card">
+                        <h3 class="tool-category-title">Languages</h3>
+                        <ul class="tool-list">
+                            <li>
+                                <strong>Javascript</strong>
+                                <p>I have been using javascript for two years first by exploring the Electron framework then moving onto web applications and server systems using Node and Express</p>
+                            </li>
+                            <li>
+                                <strong>C#</strong>
+                                <p>I started using C# my Senior year of College to learn scripting in Unity. Although I have more experience with Java I prefer C# as it can be used as a Scripting in Unity, Backends with .NET, and as a general purpose OOP language. I would like to delve deeper into .NET so I can write backends in C# with javascript frontend</p>
+                            </li>
+                            <li>
+                                <strong>Python</strong>
+                                <p>As my first programming language, I have used Python for many applications for College projects including a 2048 game solver and the logic for our Baxter Robot Tic-Tac-Toe solver. I also have classroom experience using the PyTorch and Tensor Flow Libraries.</p>
+                            </li>
+                            <li>
+                                <strong>SQL</strong>
+                                <p>I have used SQL professionally modifying scripts to pull updated daily promotion performance data and writing new scripts to clone existing Tableau dashboards to port them to PowerBI. I also have SQL experience in my databases design university course.</p>
+                            </li>
                         </ul>
                     </div>
                 </div>
