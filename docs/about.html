@@ -428,10 +428,35 @@
                 padding: 0 1rem;
             }
 
-            .nav-links {
-                gap: 1.4rem;
+            .navbar {
+                position: fixed;
+                top: 0;
+                width: 100%;
+                z-index: 1000;
+                padding: 1rem 0;
+                transition: all 0.3s ease;
             }
 
+            .nav-container {
+                flex-direction: column;
+                justify-content: space-between;
+                align-items: center;
+            }
+
+            .logo {
+                font-size: 1.75rem;
+                font-weight: 700;
+                text-decoration: none;
+            }
+
+            .nav-links {
+                display: flex;
+                list-style: none;
+                gap: 2rem;
+            }
+          .back-link {
+              margin-top: 2rem;
+          }
             .about-intro {
                 grid-template-columns: 1fr;
                 gap: 2rem;
